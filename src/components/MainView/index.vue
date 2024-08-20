@@ -9,10 +9,10 @@
           <ul
             class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full"
           >
-            <li><a href="#" class="grow">Find a Property</a></li>
-            <li><a href="#" class="basis-auto">Share Stories</a></li>
-            <li><a href="#" class="basis-auto">Rental Guides</a></li>
-            <li><a href="#" class="basis-auto">Download Mobile App</a></li>
+            <li><a href="#" class="font-semibold grow">Find a Property</a></li>
+            <li><a href="#" class="font-semibold basis-auto">Share Stories</a></li>
+            <li><a href="#" class="font-semibold basis-auto">Rental Guides</a></li>
+            <li><a href="#" class="font-semibold basis-auto">Download Mobile App</a></li>
           </ul>
           <div class="flex shrink gap-2.5 text-sm text-white basis-auto grow-0">
             <a href="#" class="px-10 py-2 my-auto rounded-3xl bg-zinc-700 max-md:px-5">
@@ -32,21 +32,34 @@
       >
         BANNER
       </h2>
-      <div
-        class="flex gap-8 items-center mt-40 max-w-full text-base font-semibold whitespace-nowrap text-zinc-700 w-[430px] max-md:mt-10"
-      >
-        <h3 class="grow self-stretch text-4xl font-bold">FIND</h3>
-        <button class="self-stretch my-auto">Rooms</button>
-        <button class="self-stretch my-auto">Flats</button>
-        <button class="self-stretch my-auto">Hostels</button>
-        <button class="self-stretch my-auto">Villas</button>
-      </div>
-      <div class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div>
+      <!-- <div class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div> -->
+      <nav class="flex gap-8  mt-40 items-start text-base font-semibold whitespace-nowrap text-zinc-700 w-[430px]">
+        <h1 class="grow self-stretch text-4xl font-bold">FIND</h1>
+        <ul class="flex gap-8">
+          <li>
+            <button class="font-semibold" @click="selectOption('Rooms')">Rooms</button>
+            <div v-if="focusedOption === 'Rooms'" class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div>
+          </li>
+          <li>
+            <button class="font-semibold" @click="selectOption('Flats')">Flats</button>
+            <div v-if="focusedOption === 'Flats'" class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div>
+          </li>
+          <li>
+            <button class="font-semibold" @click="selectOption('Hostels')">Hostels</button>
+            <div v-if="focusedOption === 'Hostels'" class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div>
+          </li>
+          <li>
+            <button class="font-semibold" @click="selectOption('Villas')">Villas</button>
+            <div v-if="focusedOption === 'Villas'" class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div>
+          </li>
+        </ul>
+      </nav>
+
       <form
         class="flex gap-5 justify-between items-center py-2 pr-2 pl-8 mt-9 max-w-full font-semibold bg-white rounded-[35px] w-[794px] max-md:pl-5"
       >
         <div class="flex flex-col self-stretch my-auto">
-          <label for="location" class="self-start text-xs text-zinc-700">Location</label>
+          <label for="location" class="font-semibold self-start text-xs text-zinc-700">Location</label>
           <input
             type="text"
             id="location"
@@ -57,7 +70,7 @@
         <div class="flex gap-4 self-stretch my-auto">
           <div class="shrink-0 w-px border border-solid border-zinc-300 h-[33px]"></div>
           <div class="flex flex-col self-start">
-            <label for="checkIn" class="self-start text-xs text-zinc-700">Check In</label>
+            <label for="checkIn" class="font-semibold self-start text-xs text-zinc-700">Check In</label>
             <input
               type="date"
               id="checkIn"
@@ -69,7 +82,7 @@
         <div class="flex gap-4 self-stretch my-auto">
           <div class="shrink-0 w-px border border-solid border-zinc-300 h-[33px]"></div>
           <div class="flex flex-col self-start">
-            <label for="checkOut" class="self-start text-xs text-zinc-700">Check Out</label>
+            <label for="checkOut" class="font-semibold self-start text-xs text-zinc-700">Check Out</label>
             <input
               type="date"
               id="checkOut"
@@ -81,7 +94,7 @@
         <div class="flex gap-3.5 self-stretch my-auto">
           <div class="shrink-0 w-px border border-solid border-zinc-300 h-[33px]"></div>
           <div class="flex flex-col self-start">
-            <label for="guests" class="self-start text-xs text-zinc-700">Guests</label>
+            <label for="guests" class="font-semibold self-start text-xs text-zinc-700">Guests</label>
             <input
               type="number"
               id="guests"
@@ -103,7 +116,7 @@
     <main
       class="flex flex-col items-start px-20 mt-24 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full"
     >
-      <h2 class="text-4xl font-bold leading-10 text-zinc-700 max-md:ml-0.5">
+      <h2 class="text-4xl font-bold leading-10 text-zinc-700 max-md:ml-0.5 w-[339px]">
         Latest on the Property Listing
       </h2>
       <div
@@ -120,7 +133,7 @@
           />
         </div>
       </section>
-      <div
+      <!-- <div
         class="flex flex-wrap gap-10 mt-5 w-full text-base font-semibold whitespace-nowrap max-w-[1046px] text-zinc-700 max-md:max-w-full"
       >
         <PropertyFeatures
@@ -128,15 +141,15 @@
           :key="index"
           :features="property.features"
         />
-      </div>
-      <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-0.5">
+      </div> -->
+      <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-0.5 w-[339px]">
         Nearby Listed Properties
       </h2>
       <div
-        class="flex flex-wrap gap-10 items-start self-stretch mt-5 w-full text-base font-bold text-zinc-700 max-md:mr-0.5 max-md:max-w-full"
+        class="flex justify-between self-stretch mt-5 w-full text-base font-bold text-zinc-700 max-md:mr-0.5 max-md:max-w-full"
       >
         <div class="flex shrink-0 self-end mt-6 h-1.5 rounded bg-zinc-700 w-[140px]"></div>
-        <button class="flex flex-1 gap-2 self-start">
+        <button class="flex gap-2 self-start">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/28c64466031dfc964ef42705713ea8bc98ce2e7647dc6fd4ec763067098cb291?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
@@ -157,23 +170,13 @@
           />
         </div>
       </section>
-      <div
-        class="flex flex-wrap gap-10 mt-5 w-full text-base font-semibold whitespace-nowrap max-w-[1046px] text-zinc-700 max-md:max-w-full"
-      >
-        <PropertyFeatures
-          v-for="(property, index) in nearbyProperties"
-          :key="index"
-          :features="property.features"
-        />
-      </div>
-      <HostingBanner />
-      <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-1">
+      <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-1 w-[339px]">
         Top Rated Properties
       </h2>
       <div
-        class="flex shrink-0 mt-11 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10 max-md:ml-1.5"
+        class="flex shrink-0 mt-9 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10 max-md:ml-1.5"
       ></div>
-      <section class="self-stretch mt-20 max-md:mt-10 max-md:max-w-full">
+      <section class="self-stretch mt-16 max-md:mt-10 max-md:max-w-full">
         <div class="flex gap-5 max-md:flex-col">
           <PropertyCard
             v-for="(property, index) in topRatedProperties"
@@ -185,6 +188,7 @@
           />
         </div>
       </section>
+      <HostingBanner />
       <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-1">
         Featured Properties on our Listing
       </h2>
@@ -203,7 +207,7 @@
           />
         </div>
       </section>
-      <div
+      <!-- <div
         class="flex flex-wrap gap-10 mt-5 w-full text-base font-semibold whitespace-nowrap max-w-[1046px] text-zinc-700 max-md:max-w-full"
       >
         <PropertyFeatures
@@ -211,7 +215,7 @@
           :key="index"
           :features="property.features"
         />
-      </div>
+      </div> -->
       <HostingBanner />
       <h2 class="mt-20 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10">
         Property Rental Guides & Tips
@@ -322,161 +326,184 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
-import PropertyFeatures from './PropertyFeatures.vue'
+import { defineComponent, ref } from 'vue'
+// import PropertyFeatures from './PropertyFeatures.vue'
 import HostingBanner from './HostingBanner.vue'
 import BlogPost from './BlogPost.vue'
 import AppDownloadBanner from './AppDownloadBanner.vue'
 import AboutSection from './AboutSection.vue'
 import NewsletterSignup from './NewsletterSignup.vue'
 import PropertyCard from './PropertyCard.vue'
+import type {
+  blogPostType,
+  featuredProperty,
+  latestProperty,
+  nearbyProperty,
+  topRatedProperty
+} from '@/assets/types/types'
 
 export default defineComponent({
   name: 'PropertyListing',
   components: {
     PropertyCard,
-    PropertyFeatures,
+    // PropertyFeatures,
     HostingBanner,
     BlogPost,
     AppDownloadBanner,
     AboutSection,
     NewsletterSignup
   },
-  data() {
+  setup() {
+    const latestProperties = ref<latestProperty[]>([
+      {
+        title: 'Well Furnished Apartment',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Comfortable Family Flat',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Beach House Summer',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Double Size Room',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      }
+    ])
+    const nearbyProperties = ref<nearbyProperty[]>([
+      {
+        title: 'Well Furnished Apartment',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Comfortable Family Flat',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Beach House Summer',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Double Size Room',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      }
+    ])
+    const topRatedProperties = ref<topRatedProperty[]>([
+      {
+        title: 'Well Furnished Apartment',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        rating: 5
+      },
+      {
+        title: 'Comfortable Family Flat',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        rating: 5
+      },
+      {
+        title: 'Beach House Summer',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        rating: 5
+      },
+      {
+        title: 'Double Size Room',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        rating: 5
+      }
+    ])
+    const featuredProperties = ref<featuredProperty[]>([
+      {
+        title: 'Well Furnished Apartment',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        price: '$ 1000 - 5000 USD',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Blue Door Villa Modern',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        price: '$ 1000 - 5000 USD',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Beach House Apartment',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        price: '$ 1000 - 5000 USD',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      }
+    ])
+    const blogPosts = ref<blogPostType[]>([
+      {
+        title: 'Choose the right property!',
+        category: 'Economy',
+        imageUrl: ''
+      },
+      {
+        title: 'Best environment for rental',
+        category: 'Lifestyle',
+        imageUrl: ''
+      },
+      {
+        title: 'Boys Hostel Apartment',
+        category: 'Property',
+        imageUrl: ''
+      }
+    ])
+
+    const focusedOption = ref('Rooms')
+
+    const selectOption = (option: string) => {
+      // Handle option selection
+      console.log(`Selected option: ${option}`);
+      focusedOption.value = option
+    }
+    
     return {
-      latestProperties: [
-        {
-          title: 'Well Furnished Apartment',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Comfortable Family Flat',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Beach House Summer',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Double Size Room',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        }
-      ],
-      nearbyProperties: [
-        {
-          title: 'Well Furnished Apartment',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Comfortable Family Flat',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Beach House Summer',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Double Size Room',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/4c2f82f2199cd3cee458ca29d36b8525cd64f4e741a9f727f2144f499512f40c?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        }
-      ],
-      topRatedProperties: [
-        {
-          title: 'Well Furnished Apartment',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/22e6d4cb20d9c2e9db2885fe6b3c8c73577744c6f23f7f43e8e71fd0599e4a8a?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          rating: 5
-        },
-        {
-          title: 'Comfortable Family Flat',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/22e6d4cb20d9c2e9db2885fe6b3c8c73577744c6f23f7f43e8e71fd0599e4a8a?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          rating: 5
-        },
-        {
-          title: 'Beach House Summer',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/22e6d4cb20d9c2e9db2885fe6b3c8c73577744c6f23f7f43e8e71fd0599e4a8a?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          rating: 5
-        },
-        {
-          title: 'Double Size Room',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/22e6d4cb20d9c2e9db2885fe6b3c8c73577744c6f23f7f43e8e71fd0599e4a8a?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          rating: 5
-        }
-      ],
-      featuredProperties: [
-        {
-          title: 'Well Furnished Apartment',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          price: '$ 1000 - 5000 USD',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Blue Door Villa Modern',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          price: '$ 1000 - 5000 USD',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        },
-        {
-          title: 'Beach House Apartment',
-          address: '100 Smart Street, LA, USA',
-          imageUrl:
-            'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-          price: '$ 1000 - 5000 USD',
-          features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
-        }
-      ],
-      blogPosts: [
-        {
-          title: 'Choose the right property!',
-          category: 'Economy',
-          imageUrl: ''
-        },
-        {
-          title: 'Best environment for rental',
-          category: 'Lifestyle',
-          imageUrl: ''
-        },
-        {
-          title: 'Boys Hostel Apartment',
-          category: 'Property',
-          imageUrl: ''
-        }
-      ]
+      latestProperties,
+      nearbyProperties,
+      topRatedProperties,
+      featuredProperties,
+      blogPosts,
+      selectOption,
+      focusedOption
     }
   }
 })
@@ -491,5 +518,9 @@ ul > li > a {
 ul > li > a:hover {
   background-color: hsla(180, 1%, 47%, 0.2);
   border-radius: 12px;
+}
+.selected_btn {
+  padding-bottom: 10px;
+
 }
 </style>
