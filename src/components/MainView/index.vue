@@ -1,8 +1,8 @@
 <template>
   <div class="flex overflow-hidden flex-col bg-white rounded-3xl">
-    <header class="flex flex-col items-center pt-1.5 pb-20 w-full bg-gray-100 max-md:max-w-full">
+    <header class="flex flex-col items-center pt-1.5 pb-20 w-full  max-md:max-w-full banner-header-image">
       <nav
-        class="flex overflow-hidden flex-wrap gap-10 self-stretch px-20 py-1.5 w-full bg-white bg-opacity-0 max-md:px-5 max-md:max-w-full"
+        class="mb-28 flex overflow-hidden flex-wrap gap-10 self-stretch px-20 py-1.5 w-full bg-white bg-opacity-0 max-md:px-5 max-md:max-w-full"
       >
         <h1 class="grow shrink my-auto text-4xl font-extrabold text-zinc-700 w-[86px]">LOGO</h1>
         <div class="flex flex-wrap gap-10 font-semibold">
@@ -27,11 +27,8 @@
           </div>
         </div>
       </nav>
-      <h2
-        class="mt-28 text-9xl font-extrabold text-gray-200 max-md:mt-10 max-md:max-w-full max-md:text-4xl"
-      >
-        BANNER
-      </h2>
+      <div
+        class="mt-28 text-9xl font-extrabold text-gray-200 max-md:mt-10 max-md:max-w-full max-md:text-4xl"></div>
       <!-- <div class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div> -->
       <nav class="flex gap-8  mt-40 items-start text-base font-semibold whitespace-nowrap text-zinc-700 w-[430px]">
         <h1 class="grow self-stretch text-4xl font-bold">FIND</h1>
@@ -188,40 +185,32 @@
           />
         </div>
       </section>
-      <HostingBanner />
-      <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-1">
+      <HostingBanner :banner="tryHostingBanner"/>
+      <h2 class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-1 w-[339px]">
         Featured Properties on our Listing
       </h2>
       <div
-        class="flex shrink-0 mt-11 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10 max-md:ml-1.5"
+        class="flex shrink-0 mt-9 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10 max-md:ml-1.5"
       ></div>
       <section class="self-stretch mt-20 max-md:mt-10 max-md:max-w-full">
-        <div class="flex gap-5 max-md:flex-col">
-          <PropertyCard
+        <div class="flex flex-wrap gap-5 max-md:flex-col">
+          <PropertyFeaturesCard
             v-for="(property, index) in featuredProperties"
             :key="index"
             :title="property.title"
             :address="property.address"
             :imageUrl="property.imageUrl"
             :price="property.price"
+            :features="property.features"
           />
         </div>
       </section>
-      <!-- <div
-        class="flex flex-wrap gap-10 mt-5 w-full text-base font-semibold whitespace-nowrap max-w-[1046px] text-zinc-700 max-md:max-w-full"
-      >
-        <PropertyFeatures
-          v-for="(property, index) in featuredProperties"
-          :key="index"
-          :features="property.features"
-        />
-      </div> -->
-      <HostingBanner />
-      <h2 class="mt-20 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10">
+      <HostingBanner :banner="browseForBanner" />
+      <h2 class="mt-20 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 w-[339px]">
         Property Rental Guides & Tips
       </h2>
       <div
-        class="flex shrink-0 mt-12 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10 max-md:ml-1"
+        class="flex shrink-0 mt-9 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10 max-md:ml-1"
       ></div>
       <section class="self-stretch mt-16 max-md:mt-10 max-md:max-w-full">
         <div class="flex gap-5 max-md:flex-col">
@@ -235,7 +224,7 @@
         </div>
       </section>
       <button
-        class="self-center px-14 py-6 mt-16 max-w-full text-base font-bold text-white bg-zinc-700 rounded-[30px] w-[220px] max-md:px-5 max-md:mt-10"
+        class="self-center px-14 py-3 mt-16 max-w-full text-base font-bold text-white bg-zinc-700 rounded-[30px] w-[220px] max-md:px-5 max-md:mt-10"
       >
         View All Blogs
       </button>
@@ -340,13 +329,15 @@ import type {
   latestProperty,
   nearbyProperty,
   topRatedProperty
-} from '@/assets/types/types'
+} from '../../assets/types/types'
+import PropertyFeaturesCard from './PropertyFeaturesCard.vue'
 
 export default defineComponent({
   name: 'PropertyListing',
   components: {
     PropertyCard,
     // PropertyFeatures,
+    PropertyFeaturesCard,
     HostingBanner,
     BlogPost,
     AppDownloadBanner,
@@ -468,27 +459,62 @@ export default defineComponent({
           'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
         price: '$ 1000 - 5000 USD',
         features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Well Furnished Apartment',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        price: '$ 1000 - 5000 USD',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Blue Door Villa Modern',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        price: '$ 1000 - 5000 USD',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+      },
+      {
+        title: 'Double Size Room',
+        address: '100 Smart Street, LA, USA',
+        imageUrl:
+          'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
+        price: '$ 1000 - 5000 USD',
+        features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
       }
     ])
     const blogPosts = ref<blogPostType[]>([
       {
         title: 'Choose the right property!',
         category: 'Economy',
-        imageUrl: ''
+        imageUrl: '../../assets/images/choose-the-right-property-details.jpg'
       },
       {
         title: 'Best environment for rental',
         category: 'Lifestyle',
-        imageUrl: ''
+        imageUrl: '../../assets/images/choose-the-right-property-details.jpg'
       },
       {
         title: 'Boys Hostel Apartment',
         category: 'Property',
-        imageUrl: ''
+        imageUrl: '../../assets/images/choose-the-right-property-details.jpg'
       }
     ])
 
     const focusedOption = ref('Rooms')
+    const tryHostingBanner = {
+      title: 'Try Hosting With Us',
+      description: 'Earn extra just by renting your property...',
+      title_btn: 'Become A Host'
+    }
+
+    const browseForBanner = {
+      title: 'Browse For More Properties',
+      description: 'Explore properties by their categories/types...',
+      title_btn: 'Find A Property'
+    }
 
     const selectOption = (option: string) => {
       // Handle option selection
@@ -503,7 +529,9 @@ export default defineComponent({
       featuredProperties,
       blogPosts,
       selectOption,
-      focusedOption
+      focusedOption,
+      tryHostingBanner,
+      browseForBanner
     }
   }
 })
@@ -522,5 +550,8 @@ ul > li > a:hover {
 .selected_btn {
   padding-bottom: 10px;
 
+}
+.banner-header-image {
+  background-image: url(../../assets/images/banner.jpg);
 }
 </style>

@@ -23,12 +23,12 @@
             animi, id est laborum et dolorum fuga.
           </p>
           <div class="flex gap-10 mt-12 max-md:mt-10">
-            <a href="#" class="basis-auto">Ask A Question</a>
-            <a href="#" class="basis-auto">Find A Property</a>
+            <a href="#" class="font-semibold basis-auto">Ask A Question</a>
+            <a href="#" class="font-semibold basis-auto">Find A Property</a>
           </div>
           <a
             href="#"
-            class="px-14 py-6 mt-12 text-white bg-zinc-700 rounded-[30px] max-md:px-5 max-md:mt-10"
+            class="px-14 py-3 mt-12 text-white bg-zinc-700 rounded-[30px] max-md:px-5 max-md:mt-10"
           >
             Discover More
           </a>
