@@ -37,6 +37,7 @@ export interface featuredProperty {
   address: string
   imageUrl: string
   price: string
+  features_images: string[]
   features: {
     bedrooms: number
     bathrooms: number

@@ -7,7 +7,7 @@
         <div
           class="flex flex-col items-start w-full text-base font-bold text-zinc-700 max-md:mt-10 max-md:max-w-full"
         >
-          <h2 class="text-4xl leading-10">
+          <h2 class="text-4xl leading-10 w-[460px]">
             Discover More About Property Rental
           </h2>
           <div
@@ -35,9 +35,10 @@
         </div>
       </div>
       <div class="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
-        <div
+        <img
+          src="../../assets/images/discover_more_about.webp"
           class="flex shrink-0 mx-auto mt-2.5 max-w-full bg-gray-200 rounded-xl h-[437px] w-[382px] max-md:mt-10"
-        ></div>
+        />
       </div>
     </div>
   </section>

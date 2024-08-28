@@ -1,69 +1,100 @@
 <template>
-  <article class="flex flex-col items-start text-lg text-neutral-400 w-[32.2%] shadow_card rounded-b-lg">
+  <article
+    class="flex flex-col items-start text-lg text-neutral-400 w-[32.2%] shadow_card rounded-b-lg"
+  >
     <div
-      class="flex flex-col self-stretch px-6 py-6 w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
+      class="flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
     >
+      <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true">
+        <Slide v-for="(image, index) in images" :key="index">
+          <img :src="image" class="carousel__item h-[300px] w-full rounded-t-lg" />
+        </Slide>
+
+        <template #addons>
+          <Navigation />
+          <Pagination />
+        </template>
+      </Carousel>
       <img
-        src="https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
+        src="../../assets/icons/Heart.svg"
         alt="Property image"
-        class="object-contain self-end aspect-square w-[30px]"
+        class="object-contain self-end aspect-square w-[30px] absolute m-2"
       />
-      <div class="flex gap-5 justify-between mt-64 max-md:mt-10 max-md:mr-1">
-        <div>{{ price }}</div>
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/c1e8ddbf215ebf940e5998cbf1563ee4d6c580adad3c45e3abd6d807e48d4f90?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
-          alt="Property rating"
-          class="object-contain shrink-0 self-start mt-2 aspect-[5.49] w-[55px]"
-        />
-      </div>
+      <div class="absolute mt-64 text-white font-semibold ml-2">{{ price }}</div>
     </div>
     <h2 class="px-3 mt-8 font-bold text-zinc-700">{{ title }}</h2>
     <p class="px-3 mt-3 text-sm font-medium">{{ address }}</p>
     <div class="px-3 my-3 flex gap-6 items-center text-base whitespace-nowrap text-zinc-700">
-      <PropertyFeatures
-        :features="features"
-      ></PropertyFeatures>
+      <PropertyFeatures :features="features"></PropertyFeatures>
     </div>
   </article>
 </template>
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
-import PropertyFeatures from './PropertyFeatures.vue';
+<script setup lang="ts">
+import { defineProps } from 'vue'
+import PropertyFeatures from './PropertyFeatures.vue'
+import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
+import feature1 from '@/assets/images/feature_1.webp';
+import feature2 from '@/assets/images/feature_2.webp';
+import feature3 from '@/assets/images/feature_3.webp';
+import feature4 from '@/assets/images/feature_4.webp';
 
-export default defineComponent({
-  name: 'PropertyFeaturesCard',
-  components: {
-    PropertyFeatures
+defineProps({
+  title: {
+    type: String
   },
-  props: {
-    title: {
-      type: String,
-      required: true
-    },
-    address: {
-      type: String,
-      required: true
-    },
-    imageUrl: {
-      type: String,
-      required: true
-    },
-    price: {
-      type: String,
-      default: ''
-    },
-    features: {
-      type: Object,
-      required: true
-    },
+  address: {
+    type: String
   },
-  setup() {
-    
+  imageUrl: {
+    type: String
+  },
+  price: {
+    type: String,
+    default: ''
+  },
+  features_images: {
+    type: Array
+  },
+  features: {
+    type: Object,
+    required: true
   }
 })
+const images = [feature1, feature2, feature3, feature4]
+
 </script>
 <style scoped>
 .shadow_card {
-  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.10);
+  box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1);
+}
+.carousel__pagination {
+  position: absolute;
+  bottom: 23px;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+.custom-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+#pagination-custom .carousel__pagination-button::after {
+  width: 12px !important;
+  height: 12px !important;
+  border-radius: 50% !important;
+  background-color: #ccc !important;
+}
+
+#pagination-custom .carousel__pagination-button--active::after {
+  background-color: #007bff;
+}
+
+@media (hover: hover) {
+  #pagination-custom .carousel__pagination-button:hover::after {
+    background-color: #555;
+  }
 }
 </style>

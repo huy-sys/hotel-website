@@ -3,7 +3,7 @@
     class="flex flex-wrap gap-5 justify-between self-center px-12 py-16 mt-24 max-w-full bg-gray-100 rounded-xl text-zinc-700 w-[1206px] max-md:px-5 max-md:mt-10"
   >
     <div class="flex flex-col items-start">
-      <h2 class="text-4xl font-bold leading-[52px]">Download Our Mobile App</h2>
+      <h2 class="text-4xl font-bold leading-[52px] w-[339px]">Download Our Mobile App</h2>
       <p class="mt-5 text-base font-medium leading-3 text-neutral-400">
         Available for free on these platforms
       </p>
@@ -12,7 +12,7 @@
       >
         <a
           href="#"
-          class="flex flex-1 gap-4 px-7 py-4 rounded-md bg-zinc-200 max-md:px-5"
+          class="flex flex-1 gap-4 px-5 py-3 rounded-md bg-zinc-200 max-md:px-5"
         >
           <img
             loading="lazy"
@@ -20,11 +20,11 @@
             class="object-contain shrink-0 aspect-square w-[22px]"
             alt="PlayStore icon"
           />
-          <span class="my-auto">PlayStore</span>
+          <span class="my-auto font-semibold">PlayStore</span>
         </a>
         <a
           href="#"
-          class="flex flex-1 gap-4 px-5 py-3.5 rounded-md bg-zinc-200 max-md:px-5"
+          class="flex flex-1 gap-4 px-5 py-3 rounded-md bg-zinc-200 max-md:px-5"
         >
           <img
             loading="lazy"
@@ -32,7 +32,7 @@
             class="object-contain shrink-0 w-6 aspect-square"
             alt="AppleStore icon"
           />
-          <span>AppleStore</span>
+          <span class="font-semibold">AppleStore</span>
         </a>
       </div>
     </div>
