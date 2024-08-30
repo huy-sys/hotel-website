@@ -1,8 +1,8 @@
 <template>
   <section
-    class="self-center mt-24 w-full max-w-[1207px] max-md:mt-10 max-md:max-w-full"
+    class="self-center mt-24 mb-28 w-full max-md:mt-10 max-md:max-w-full"
   >
-    <div class="flex gap-5 max-md:flex-col">
+    <div class="flex gap-5 max-md:flex-col w-[1720px] mx-auto">
       <div class="flex flex-col w-[63%] max-md:ml-0 max-md:w-full">
         <div
           class="flex flex-col items-start w-full text-base font-bold text-zinc-700 max-md:mt-10 max-md:max-w-full"
@@ -14,7 +14,7 @@
             class="flex shrink-0 mt-11 h-1.5 rounded bg-zinc-700 w-[140px] max-md:mt-10"
           ></div>
           <p
-            class="self-stretch mt-9 text-base leading-7 text-neutral-400 max-md:max-w-full"
+            class="self-stretch mt-9 text-base leading-7 text-neutral-400 max-md:max-w-full w-[720px]"
           >
             At vero eos et accusamus et iusto odio dignissimos ducimus qui
             blanditiis praesentium voluptatum deleniti atque corrupti quos
@@ -28,7 +28,7 @@
           </div>
           <a
             href="#"
-            class="px-14 py-3 mt-12 text-white bg-zinc-700 rounded-[30px] max-md:px-5 max-md:mt-10"
+            class="px-14 py-3 mt-12 text-white bg-zinc-700 rounded-[30px] max-md:px-5 max-md:mt-10 font-semibold"
           >
             Discover More
           </a>
@@ -37,7 +37,7 @@
       <div class="flex flex-col ml-5 w-[37%] max-md:ml-0 max-md:w-full">
         <img
           src="../../assets/images/discover_more_about.webp"
-          class="flex shrink-0 mx-auto mt-2.5 max-w-full bg-gray-200 rounded-xl h-[437px] w-[382px] max-md:mt-10"
+          class="flex shrink-0 mt-2.5 max-w-full bg-gray-200 rounded-xl h-[437px] w-[382px] max-md:mt-10 self-end"
         />
       </div>
     </div>

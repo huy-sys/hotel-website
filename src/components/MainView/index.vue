@@ -1,8 +1,114 @@
 <template>
   <div class="flex overflow-hidden flex-col bg-white rounded-3xl">
-    <HeaderView />
+    <div class="header-container banner-header-image">
+      <!-- <div
+        class="mt-64 mb-40 text-9xl font-extrabold text-gray-200 max-md:mt-10 max-md:max-w-full max-md:text-4xl"
+      ></div> -->
+      <!-- <div class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div> -->
+      <nav
+        class="flex gap-8 mt-[25rem] mx-auto items-start text-base font-semibold whitespace-nowrap text-zinc-700 w-[430px]"
+      >
+        <h1 class="grow self-stretch text-4xl font-bold">FIND</h1>
+        <ul class="flex gap-8">
+          <li>
+            <button class="font-semibold" @click="selectOption('Rooms')">Rooms</button>
+            <div
+              v-if="focusedOption === 'Rooms'"
+              class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"
+            ></div>
+          </li>
+          <li>
+            <button class="font-semibold" @click="selectOption('Flats')">Flats</button>
+            <div
+              v-if="focusedOption === 'Flats'"
+              class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"
+            ></div>
+          </li>
+          <li>
+            <button class="font-semibold" @click="selectOption('Hostels')">Hostels</button>
+            <div
+              v-if="focusedOption === 'Hostels'"
+              class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"
+            ></div>
+          </li>
+          <li>
+            <button class="font-semibold" @click="selectOption('Villas')">Villas</button>
+            <div
+              v-if="focusedOption === 'Villas'"
+              class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"
+            ></div>
+          </li>
+        </ul>
+      </nav>
+
+      <form
+        class="flex gap-5 justify-between items-center mx-auto py-2 pr-2 pl-8 mt-9 mb-24 max-w-full font-semibold bg-white rounded-[35px] w-[794px] max-md:pl-5"
+      >
+        <div class="flex flex-col self-stretch my-auto">
+          <label for="location" class="font-semibold self-start text-xs text-zinc-700"
+            >Location</label
+          >
+          <input
+            type="text"
+            id="location"
+            placeholder="Which city do you prefer?"
+            class="mt-3 text-sm text-neutral-300"
+          />
+        </div>
+        <div class="flex gap-4 self-stretch my-auto">
+          <div class="shrink-0 w-px border border-solid border-zinc-300 h-[33px]"></div>
+          <div class="flex flex-col self-start">
+            <label for="checkIn" class="font-semibold self-start text-xs text-zinc-700"
+              >Check In</label
+            >
+            <input
+              type="date"
+              id="checkIn"
+              placeholder="Add Dates"
+              class="mt-3 text-sm text-neutral-300"
+            />
+          </div>
+        </div>
+        <div class="flex gap-4 self-stretch my-auto">
+          <div class="shrink-0 w-px border border-solid border-zinc-300 h-[33px]"></div>
+          <div class="flex flex-col self-start">
+            <label for="checkOut" class="font-semibold self-start text-xs text-zinc-700"
+              >Check Out</label
+            >
+            <input
+              type="date"
+              id="checkOut"
+              placeholder="Add Dates"
+              class="mt-3 text-sm text-neutral-300"
+            />
+          </div>
+        </div>
+        <div class="flex gap-3.5 self-stretch my-auto">
+          <div class="shrink-0 w-px border border-solid border-zinc-300 h-[33px]"></div>
+          <div class="flex flex-col self-start">
+            <label for="guests" class="font-semibold self-start text-xs text-zinc-700"
+              >Guests</label
+            >
+            <input
+              type="number"
+              id="guests"
+              placeholder="Add Guests"
+              class="mt-3 text-sm text-neutral-300"
+            />
+          </div>
+        </div>
+        <button type="submit" aria-label="Search">
+          <img
+            loading="lazy"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f1d481ae89ba6816fdd35f3c920b02b63271681a6bcde2ffb9abf5a6d56c617?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
+            class="object-contain shrink-0 self-stretch aspect-square w-[54px]"
+            alt=""
+          />
+        </button>
+      </form>
+    </div>
     <main
-      class="flex flex-col items-start px-20 mt-24 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full"
+      class="main-container max-w-[1720px] flex flex-col items-start px-20 mt-24 mx-auto w-full max-md:px-5 max-md:mt-10 max-md:max-w-full"
     >
       <h2 class="text-4xl font-bold leading-10 text-zinc-700 max-md:ml-0.5 w-[339px]">
         Latest on the Property Listing
@@ -129,8 +235,6 @@
     </main>
     <AppDownloadBanner />
     <AboutSection />
-    <NewsletterSignup />
-    <FooterView />
   </div>
 </template>
 
@@ -141,7 +245,6 @@ import HostingBanner from './HostingBanner.vue'
 import BlogPost from './BlogPost.vue'
 import AppDownloadBanner from './AppDownloadBanner.vue'
 import AboutSection from './AboutSection.vue'
-import NewsletterSignup from './NewsletterSignup.vue'
 import PropertyCard from './PropertyCard.vue'
 import type {
   blogPostType,
@@ -151,8 +254,6 @@ import type {
   topRatedProperty
 } from '../../assets/types/types'
 import PropertyFeaturesCard from './PropertyFeaturesCard.vue'
-import HeaderView from '../HeaderView.vue'
-import FooterView from '../FooterView.vue'
 
 const latestProperties = ref<latestProperty[]>([
   {
@@ -348,6 +449,13 @@ const blogPosts = ref<blogPostType[]>([
   }
 ])
 
+const focusedOption = ref('Rooms')
+const selectOption = (option: string) => {
+  // Handle option selection
+  console.log(`Selected option: ${option}`)
+  focusedOption.value = option
+}
+
 const tryHostingBanner = {
   title: 'Try Hosting With Us',
   description: 'Earn extra just by renting your property...',
@@ -359,7 +467,6 @@ const browseForBanner = {
   description: 'Explore properties by their categories/types...',
   title_btn: 'Find A Property'
 }
-
 </script>
 <style scoped>
 ul > li > a {
@@ -377,5 +484,7 @@ ul > li > a:hover {
 }
 .banner-header-image {
   background-image: url(../../assets/images/banner.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

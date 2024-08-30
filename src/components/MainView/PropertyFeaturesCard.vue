@@ -7,7 +7,7 @@
     >
       <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true">
         <Slide v-for="(image, index) in images" :key="index">
-          <img :src="image" class="carousel__item h-[300px] w-full rounded-t-lg" />
+          <img :src="image" class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat" />
         </Slide>
 
         <template #addons>

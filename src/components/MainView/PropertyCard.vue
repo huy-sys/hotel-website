@@ -16,7 +16,10 @@
         />
       </div>
       <div class="flex flex-col items-start mt-36 max-md:px-5 max-md:mt-10">
-        <img class="flex mb-4 shrink-0 rounded-full bg-neutral-300 h-[70px] w-[70px]" src="../../assets/images/avartar_card.jpg"/>
+        <img
+          class="flex mb-4 shrink-0 rounded-full bg-neutral-300 h-[70px] w-[70px]"
+          src="../../assets/images/avartar_card.jpg"
+        />
         <h3 class="self-stretch mt-1 text-lg font-bold leading-3 text-white">
           {{ title }}
         </h3>
@@ -103,5 +106,7 @@ input[type='range'] {
 }
 .bg-image {
   background-image: url(../../assets/images/demo_rooms.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

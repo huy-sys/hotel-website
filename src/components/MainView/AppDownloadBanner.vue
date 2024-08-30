@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-wrap gap-5 justify-between self-center px-12 py-16 mt-24 max-w-full bg-gray-100 rounded-xl text-zinc-700 w-[1206px] max-md:px-5 max-md:mt-10"
+    class="flex flex-wrap gap-5 justify-between self-center px-12 py-16 mt-24 max-w-full bg-gray-100 rounded-xl w-[1720px] text-zinc-700 max-md:px-5 max-md:mt-10"
   >
     <div class="flex flex-col items-start">
       <h2 class="text-4xl font-bold leading-[52px] w-[339px]">Download Our Mobile App</h2>

@@ -1,6 +1,6 @@
 <template>
   <section
-    class="flex flex-col justify-center items-center px-16 py-8 mt-28 w-full bg-gray-200 max-md:px-5 max-md:mt-10 max-md:max-w-full"
+    class="flex flex-col justify-center items-center px-16 py-8 w-full bg-gray-200 max-md:px-5 max-md:mt-10 max-md:max-w-full"
   >
     <div class="flex flex-wrap gap-10 w-full max-w-[1000px] max-md:max-w-full">
       <div class="flex flex-col my-auto text-zinc-700">

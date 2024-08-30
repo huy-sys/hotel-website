@@ -2,11 +2,11 @@
   <footer class="flex overflow-hidden flex-col w-full bg-white text-zinc-700 max-md:max-w-full">
     <div class="flex flex-col pt-20 pb-10 w-full bg-gray-100 max-md:max-w-full">
       <div
-        class="flex flex-wrap gap-5 justify-between ml-20 w-full text-base max-w-[1109px] max-md:max-w-full"
+        class="flex flex-wrap gap-5 justify-between mx-auto w-full text-base max-w-[1720px] max-md:max-w-full"
       >
         <div class="flex flex-col items-start">
           <h2 class="text-5xl font-extrabold max-md:text-4xl">LOGO</h2>
-          <p class="self-stretch mt-12 leading-5 text-neutral-400 max-md:mt-10">
+          <p class="self-stretch mt-12 leading-5 text-neutral-400 w-[330px] max-md:mt-10">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             incididunt ut labore et dolore magna aliqua.
           </p>
@@ -35,9 +35,9 @@
           <h3 class="text-lg font-bold leading-none">COMPANY</h3>
           <ul>
             <li><a href="#" class="mt-9 block">About Us</a></li>
-            <li><a href="#" class="self-stretch mt-6 block">Legal Information</a></li>
+            <li><a href="#" class="self-stretch mt-5 block">Legal Information</a></li>
             <li><a href="#" class="mt-5 block">Contact Us</a></li>
-            <li><a href="#" class="mt-6 block">Blogs</a></li>
+            <li><a href="#" class="mt-5 block">Blogs</a></li>
           </ul>
         </nav>
         <nav class="flex flex-col items-start self-start mt-3.5 font-medium leading-none">
@@ -45,12 +45,12 @@
           <ul>
             <li><a href="#" class="mt-9 block">Find a Property</a></li>
             <li><a href="#" class="mt-5 block">How To Host?</a></li>
-            <li><a href="#" class="mt-6 block">Why Us?</a></li>
+            <li><a href="#" class="mt-5 block">Why Us?</a></li>
             <li><a href="#" class="mt-5 block">FAQs</a></li>
             <li><a href="#" class="mt-5 block">Rental Guides</a></li>
           </ul>
         </nav>
-        <div class="flex flex-col my-auto font-medium leading-none">
+        <div class="flex flex-col mt-3.5 font-medium leading-none">
           <address class="flex flex-col items-start pl-2.5 not-italic">
             <h3 class="text-lg font-bold leading-none">CONTACT INFO</h3>
             <p class="mt-9">Phone: <a href="tel:1234567890">1234567890</a></p>
@@ -60,7 +60,7 @@
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab55275caed5830765492c7a59099e8f83287e2e4540c8cc00b85ae34ea9ef61?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
-            class="object-contain mt-9 max-w-full aspect-[5.03] w-[191px]"
+            class="object-contain mt-10 max-w-full aspect-[5.03] w-[191px]"
             alt="Social media icons"
           />
         </div>
