@@ -1,12 +1,17 @@
 <template>
   <header
-    class="fixed flex flex-col items-center pt-1.5 mx-auto max-md:max-w-full w-full"
+    class="fixed flex flex-col items-center pt-1.5 mx-auto max-md:max-w-full w-full z-[999]"
     :style="{ backgroundColor: backgroundColor }"
   >
     <nav
       class="flex overflow-hidden flex-wrap gap-10 self-stretch px-20 py-1.5 mx-auto bg-white bg-opacity-0 max-md:px-5 max-md:max-w-full w-[1720px]"
     >
-      <h1 class="grow shrink my-auto text-4xl font-extrabold text-zinc-700 w-[60px]">LOGO</h1>
+      <a
+        class="grow shrink my-auto text-4xl font-extrabold text-zinc-700 w-[60px]"
+        href="/"
+      >
+        LOGO
+      </a>
       <div class="flex flex-wrap gap-10 font-semibold">
         <ul
           class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full"
@@ -33,19 +38,37 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import router from '@/router'
+import { useRoute } from 'vue-router'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 
-const backgroundColor = ref('transparent')
+const scrollBackgroundColor = ref('')
+const route = useRoute()
+
+const backgroundColor = computed(() => {
+  if (scrollBackgroundColor.value) {
+    return scrollBackgroundColor.value  // Nếu cuộn, ưu tiên màu nền khi cuộn
+  }
+  if(route.name === 'home') {
+    return 'transparent'
+  } else {
+    return '#EFF0F2'
+  }
+})
 
 const handleScroll = () => {
-  const headerContainer = document.getElementsByClassName('header-container')
-  const childDiv2Position = headerContainer[0].getBoundingClientRect().bottom
-  if (childDiv2Position <= 96) {
-    backgroundColor.value = '#EFF0F2'
+  const mainContainer = document.getElementsByClassName('main-container')
+  const childDiv2Position = mainContainer[0].getBoundingClientRect().top
+  const scrollPosition = window.scrollY
+  console.log(scrollPosition)
+
+  if (childDiv2Position >= 210) {
+    scrollBackgroundColor.value = 'transparent'
   } else {
-    backgroundColor.value = 'transparent'
+    scrollBackgroundColor.value = '#EFF0F2'
   }
 }
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 })
@@ -65,5 +88,8 @@ ul > li > a {
 ul > li > a:hover {
   background-color: hsla(180, 1%, 47%, 0.2);
   border-radius: 12px;
+}
+h1:hover {
+  cursor: pointer;
 }
 </style>

@@ -1,11 +1,13 @@
 <template>
   <el-container>
-    <HeaderView />
-    <el-main>
+      <HeaderView />
+    <el-main class="bg-white">
       <router-view />
-      <NewsletterSignup />
     </el-main>
-    <FooterView />
+    <el-footer>
+      <NewsletterSignup />
+      <FooterView />
+    </el-footer>
   </el-container>
 </template>
 
@@ -18,5 +20,11 @@ import NewsletterSignup from '@/components/MainView/NewsletterSignup.vue'
 <style scoped>
 .el-container {
   min-height: calc(100% - 60px);
+}
+
+.el-footer, 
+.el-main {
+  padding-left: 0;
+  padding-right: 0;
 }
 </style>
