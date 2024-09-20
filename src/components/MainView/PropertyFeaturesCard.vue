@@ -1,6 +1,7 @@
 <template>
   <article
     class="flex flex-col items-start text-lg text-neutral-400 w-[32.2%] shadow_card rounded-b-lg"
+    @click="goDetailItem"
   >
     <div
       class="flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
@@ -25,12 +26,13 @@
     <h2 class="px-3 mt-8 font-bold text-zinc-700">{{ title }}</h2>
     <p class="px-3 mt-3 text-sm font-medium">{{ address }}</p>
     <div class="px-3 my-3 flex gap-6 items-center text-base whitespace-nowrap text-zinc-700">
-      <PropertyFeatures :features="features"></PropertyFeatures>
+      <PropertyFeatures :features="features" v-if="features"></PropertyFeatures>
     </div>
   </article>
 </template>
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import { useRouter } from 'vue-router';
 import PropertyFeatures from './PropertyFeatures.vue'
 import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
@@ -39,7 +41,10 @@ import feature2 from '@/assets/images/feature_2.webp';
 import feature3 from '@/assets/images/feature_3.webp';
 import feature4 from '@/assets/images/feature_4.webp';
 
-defineProps({
+const props = defineProps({
+  id: {
+    type: Number
+  }, // Thêm ID để nhận diện property
   title: {
     type: String
   },
@@ -57,15 +62,19 @@ defineProps({
     type: Array
   },
   features: {
-    type: Object,
-    required: true
+    type: Object
   }
 })
 const images = [feature1, feature2, feature3, feature4]
 
+const router = useRouter()
+const goDetailItem = () => {
+  // Chuyển hướng đến trang chi tiết với ID của property
+  router.push({ name: 'PropertyDetail', params: { id: props.id } });
+};
 </script>
 <style scoped>
-.shadow_card {
+.shadow_card:hover {
   box-shadow: 0px 3px 12px 0px rgba(0, 0, 0, 0.1);
 }
 .carousel__pagination {

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { defineComponent } from 'vue'
-import PropertyListing from '../components/MainView/index.vue'
+import PropertyListing from '../components/MainView/MainViewContainer.vue'
 
 export default defineComponent({
   components: {

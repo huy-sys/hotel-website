@@ -7,7 +7,7 @@
         class="object-contain shrink-0 self-center aspect-[1.35] w-[23px]"
         alt="Bedrooms"
       />
-      <span>{{ features.bedrooms }}</span>
+      <span>{{ features?.bedrooms }}</span>
     </div>
     <div class="flex gap-2 self-stretch my-auto">
       <img
@@ -16,7 +16,7 @@
         class="object-contain shrink-0 self-center aspect-square w-[19px]"
         alt="Bathrooms"
       />
-      <span>{{ features.bathrooms }}</span>
+      <span>{{ features?.bathrooms }}</span>
     </div>
     <div class="flex gap-1.5 self-stretch">
       <img
@@ -25,7 +25,7 @@
         class="object-contain shrink-0 self-center aspect-square w-[27px]"
         alt="Area"
       />
-      <span class="self-start">{{ features.area }}</span>
+      <span class="self-start">{{ features?.area }}</span>
     </div>
     <div class="flex gap-1.5 self-stretch my-auto">
       <img
@@ -34,7 +34,7 @@
         class="object-contain shrink-0 self-center aspect-square w-[23px]"
         alt="Parking"
       />
-      <span class="self-start">{{ features.parking }}</span>
+      <span class="self-start">{{ features?.parking }}</span>
     </div>
   </div>
 </template>
@@ -42,19 +42,11 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 
-interface Features {
-  bedrooms: number;
-  bathrooms: number;
-  area: number;
-  parking: number;
-}
-
 export default defineComponent({
   name: "PropertyFeatures",
   props: {
     features: {
-      type: Object,
-      required: true,
+      type: Object
     },
   },
 });

@@ -33,15 +33,16 @@ export interface topRatedProperty {
   rating: number
 }
 export interface featuredProperty {
-  title: string
+  id: number,
+  title: string,
   address: string
   imageUrl: string
-  price: string
+  price?: string
   features_images: string[]
-  features: {
-    bedrooms: number
-    bathrooms: number
-    area: number
-    parking: number
+  features?: {
+    bedrooms?: number
+    bathrooms?: number
+    area?: number
+    parking?: number
   }
 }
