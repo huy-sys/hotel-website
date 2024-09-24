@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="px-20 w-[1720px] mx-auto">
     <div class="h-[48px] mt-[74px] mb-0 flex justify-between">
       <ul class="flex gap-8 items-start h-[80%]">
