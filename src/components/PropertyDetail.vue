@@ -23,11 +23,20 @@
     </div>
     <!-- Content -->
      <div class="grid grid-cols-3 gap-[50px] mx-[80px]">
-        <div class="col-span-2 bg-gray-300">
-            Absc
+        <div class="col-span-2">
+            <div class="detail-header flex justify-between">
+              <div class="header-content flex flex-col">
+                <span class="font-bold text-[28px]">Well Furnished Apartment</span>
+                <span class="text-[#9A9A9A]">100 Smart Street, LA, USA</span>
+              </div>
+              <div class="header-action flex gap-[24px]">
+                <IconHeart />
+                <IconShare />
+              </div>
+            </div>
         </div>
         <div class="content-right rounded-lg">
-            <span class="price">$ 1000 - $ 2000</span>
+            <span class="price font-bold">$ 1000 - $ 2000</span>
             <div class="line"></div>
             <ul>
                 <li>Short Period: $ 1000</li>
@@ -38,11 +47,11 @@
             <div class="redirect-action flex justify-between">
                 <div class="flex">
                     <IconInquiry />  
-                   <span class="mb-[7px]">Property Inquiry</span> 
+                   <span class="ml-[7px] font-semibold">Property Inquiry</span> 
                 </div>
                 <div class="flex">
                     <IconPhone /> 
-                   <span class="mb-[7px]">Contact Host</span>
+                   <span class="ml-[7px] font-semibold">Contact Host</span>
                 </div>
             </div>
         </div>
@@ -56,6 +65,8 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import IconInquiry from './icons/IconInquiry.vue';
 import IconPhone from './icons/IconPhone.vue';
+import IconShare from './icons/IconShare.vue';
+import IconHeart from './icons/IconHeart.vue';
 
 const route = useRoute()
 const property = ref(null)
@@ -78,6 +89,7 @@ onMounted(async () => {
 }
 .price {
     margin-bottom: 28px;
+    font-size: 22px;
 }
 .line {
     border-top: 1px solid #E0E2E6;
@@ -86,7 +98,8 @@ onMounted(async () => {
 }
 ul > li {
     color: #9A9A9A;
-    font-weight: 400;
+    font-weight: 200;
+    font-size: 16px;
 }
 .reserve {
     width: 100%;
