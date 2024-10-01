@@ -478,15 +478,82 @@
         </div>
         <div class="nearby-services mt-[50px] mb-[36px]">
           <h3 class="font-bold text-[28px] mt-[14px] mb-[28px]">Nearby Services</h3>
-          <Carousel v-bind="settings" :breakpoints="breakpoints">
-            <Slide v-for="slide in 10" :key="slide">
-              <div class="carousel__item">{{ slide }}</div>
+          <Carousel ref="carousel" :settings="settings" :breakpoints="breakpoints">
+            <Slide v-for="(service, index) in services" :key="index">
+              <div class="service-card">
+                <h3 class="font-semibold">{{ service.name }}</h3>
+                <p>{{ service.distance }} meters away</p>
+                <div class="rating">
+                  <span v-for="i in 5" :key="i" :class="i <= service.rating ? 'filled' : 'empty'"
+                    >★</span
+                  >
+                </div>
+              </div>
             </Slide>
-
-            <template #addons>
-              <Navigation />
+            <template #addons="{ slidesCount }">
+              <navigation v-if="slidesCount > 0">
+                <template #next>
+                  <svg
+                    width="24"
+                    height="21"
+                    viewBox="0 0 24 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M2 10.75H22"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M13.25 2L22 10.75L13.25 19.5"
+                      stroke="white"
+                      stroke-width="2.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </template>
+                <template #prev>
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M21 12C21 12.1989 20.921 12.3897 20.7803 12.5303C20.6397 12.671 20.4489 12.75 20.25 12.75H5.56029L11.0306 18.2194C11.1003 18.289 11.1556 18.3718 11.1933 18.4628C11.231 18.5539 11.2504 18.6514 11.2504 18.75C11.2504 18.8485 11.231 18.9461 11.1933 19.0372C11.1556 19.1282 11.1003 19.2109 11.0306 19.2806C10.9609 19.3503 10.8782 19.4056 10.7872 19.4433C10.6961 19.481 10.5985 19.5004 10.5 19.5004C10.4014 19.5004 10.3039 19.481 10.2128 19.4433C10.1218 19.4056 10.039 19.3503 9.96935 19.2806L3.21935 12.5306C3.14962 12.461 3.0943 12.3782 3.05656 12.2872C3.01882 12.1961 2.99939 12.0986 2.99939 12C2.99939 11.9014 3.01882 11.8038 3.05656 11.7128C3.0943 11.6217 3.14962 11.539 3.21935 11.4694L9.96935 4.71936C10.1101 4.57863 10.301 4.49957 10.5 4.49957C10.699 4.49957 10.8899 4.57863 11.0306 4.71936C11.1713 4.8601 11.2504 5.05097 11.2504 5.24999C11.2504 5.44901 11.1713 5.63988 11.0306 5.78061L5.56029 11.25H20.25C20.4489 11.25 20.6397 11.329 20.7803 11.4697C20.921 11.6103 21 11.8011 21 12Z"
+                      fill="white"
+                    />
+                  </svg>
+                </template>
+              </navigation>
             </template>
           </Carousel>
+          <button class="show-on-map-btn">Show On Map</button>
+        </div>
+        <div class="reviews">
+          <div class="flex items-center mb-[28px]">
+            <span class="font-bold text-[28px] mt-[14px]">Reviews</span>
+            <div>
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M19.9471 7.18002C19.8843 6.99491 19.7686 6.83225 19.6143 6.71214C19.4601 6.59202 19.274 6.5197 19.0791 6.50411L13.3781 6.05117L10.9111 0.590889C10.8325 0.415025 10.7047 0.265654 10.5431 0.160804C10.3815 0.0559538 10.193 0.000105865 10.0004 1.50359e-07C9.80777 -0.000105564 9.61922 0.0555355 9.45751 0.160208C9.2958 0.264881 9.16784 0.414111 9.08908 0.589889L6.62206 6.05117L0.921032 6.50411C0.729486 6.51928 0.546368 6.5893 0.393584 6.70581C0.2408 6.82231 0.12482 6.98036 0.0595198 7.16105C-0.00578041 7.34173 -0.017636 7.5374 0.0253714 7.72465C0.0683787 7.91189 0.164428 8.08278 0.302028 8.21688L4.51505 12.3233L3.02504 18.7745C2.9798 18.9698 2.9943 19.1741 3.06666 19.361C3.13903 19.548 3.26591 19.7088 3.43085 19.8228C3.59579 19.9367 3.79117 19.9984 3.99163 20C4.1921 20.0015 4.3884 19.9427 4.55505 19.8313L10.0001 16.2018L15.4451 19.8313C15.6155 19.9444 15.8163 20.0026 16.0208 19.9981C16.2252 19.9937 16.4233 19.9267 16.5885 19.8063C16.7537 19.6858 16.8781 19.5177 16.9449 19.3245C17.0117 19.1313 17.0177 18.9222 16.9621 18.7255L15.1331 12.3263L19.6691 8.24487C19.9661 7.97691 20.0751 7.55897 19.9471 7.18002Z"
+                  fill="#484848"
+                />
+              </svg>
+            </div>
+            <span class="font-bold text-[28px] mt-[14px]">5.0</span>
+          </div>
         </div>
       </div>
       <div class="content-right rounded-lg">
@@ -544,10 +611,21 @@ const breakpoints = {
   },
   // 1024 and up
   1024: {
-    itemsToShow: 5,
+    itemsToShow: 3,
     snapAlign: 'start'
   }
 }
+
+const services = [
+  { name: 'Grill Restro & Bar', distance: 100, rating: 5 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 0 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 3 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 1 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 2 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 4 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 1 },
+  { name: 'Grill Restro & Bar', distance: 100, rating: 2 }
+]
 
 onMounted(async () => {
   const propertyId = route.params.id
@@ -608,5 +686,64 @@ ul > li {
   padding: 16px 37px;
   border: 1px solid #484848;
   border-radius: 6px;
+}
+.carousel__slide {
+  padding: 20px 0;
+}
+.nearby-services /deep/ .carousel__prev,
+.nearby-services /deep/ .carousel__next {
+  background: #9a9a9a;
+  padding: 10px;
+  border-radius: 50%;
+  color: #fff;
+}
+.nearby-services /deep/ .carousel__next {
+  right: -25px;
+}
+.nearby-services /deep/ .carousel__prev {
+  left: -25px;
+}
+.service-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: left;
+  width: 95%;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.service-card p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.rating span {
+  font-size: 1.2rem;
+  margin-right: 4px;
+}
+
+/* Màu sắc của các ngôi sao */
+.filled {
+  color: #ffcc00; /* Vàng cho rating */
+}
+
+.empty {
+  color: #ccc; /* Xám cho rating 0 */
+}
+
+.show-on-map-btn {
+  background-color: #aaa;
+  border: none;
+  border-radius: 24px;
+  color: white;
+  padding: 10px 20px;
+  font-size: 1rem;
+  margin-top: 20px;
+  cursor: pointer;
 }
 </style>

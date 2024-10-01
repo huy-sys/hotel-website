@@ -347,6 +347,7 @@ const topRatedProperties = ref<topRatedProperty[]>([
 ])
 const featuredProperties = ref<featuredProperty[]>([
   {
+    id: 1,
     title: 'Well Furnished Apartment',
     address: '100 Smart Street, LA, USA',
     imageUrl:
@@ -357,78 +358,77 @@ const featuredProperties = ref<featuredProperty[]>([
       '../../assets/images/feature_2.webp',
       '../../assets/images/feature_3.webp',
       '../../assets/images/feature_4.webp'
-    ],
-    features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+    ]
   },
   {
+    id: 2,
     title: 'Blue Door Villa Modern',
     address: '100 Smart Street, LA, USA',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-    price: '$ 1000 - 5000 USD',
+
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
       '../../assets/images/feature_3.webp',
       '../../assets/images/feature_4.webp'
-    ],
-    features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+    ]
   },
   {
+    id: 3,
     title: 'Beach House Apartment',
     address: '100 Smart Street, LA, USA',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-    price: '$ 1000 - 5000 USD',
+
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
       '../../assets/images/feature_3.webp',
       '../../assets/images/feature_4.webp'
-    ],
-    features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+    ]
   },
   {
+    id: 4,
     title: 'Well Furnished Apartment',
     address: '100 Smart Street, LA, USA',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-    price: '$ 1000 - 5000 USD',
+
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
       '../../assets/images/feature_3.webp',
       '../../assets/images/feature_4.webp'
-    ],
-    features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+    ]
   },
   {
+    id: 5,
     title: 'Blue Door Villa Modern',
     address: '100 Smart Street, LA, USA',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-    price: '$ 1000 - 5000 USD',
+
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
       '../../assets/images/feature_3.webp',
       '../../assets/images/feature_4.webp'
-    ],
-    features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+    ]
   },
   {
+    id: 6,
     title: 'Double Size Room',
     address: '100 Smart Street, LA, USA',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
-    price: '$ 1000 - 5000 USD',
+
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
       '../../assets/images/feature_3.webp',
       '../../assets/images/feature_4.webp'
-    ],
-    features: { bedrooms: 3, bathrooms: 1, area: 2, parking: 0 }
+    ]
   }
 ])
 const blogPosts = ref<blogPostType[]>([
