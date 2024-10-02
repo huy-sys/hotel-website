@@ -200,6 +200,7 @@
           <PropertyFeaturesCard
             v-for="(property, index) in featuredProperties"
             :key="index"
+            :id="property.id"
             :title="property.title"
             :address="property.address"
             :imageUrl="property.imageUrl"
@@ -367,6 +368,7 @@ const featuredProperties = ref<featuredProperty[]>([
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
+    price: '$ 1000 - 5000 USD',
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
@@ -381,6 +383,7 @@ const featuredProperties = ref<featuredProperty[]>([
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
+    price: '$ 1000 - 5000 USD',
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
@@ -395,6 +398,7 @@ const featuredProperties = ref<featuredProperty[]>([
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
+    price: '$ 1000 - 5000 USD',
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
@@ -409,6 +413,7 @@ const featuredProperties = ref<featuredProperty[]>([
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
+    price: '$ 1000 - 5000 USD',
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',
@@ -423,6 +428,7 @@ const featuredProperties = ref<featuredProperty[]>([
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
+    price: '$ 1000 - 5000 USD',
     features_images: [
       '../../assets/images/feature_1.webp',
       '../../assets/images/feature_2.webp',

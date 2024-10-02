@@ -1,5 +1,5 @@
 <template>
-  <div class="property-detail mt-[74px] w-[1720px] mx-auto">
+  <div class="property-detail mt-[114px] w-[1720px] mx-auto">
     <!-- Image -->
     <div class="grid grid-cols-4 grid-rows-2 gap-2 h-[540px] mb-[71px]">
       <!-- Large image (left side) -->
@@ -22,7 +22,7 @@
       </div>
     </div>
     <!-- Content -->
-    <div class="grid grid-cols-3 gap-[50px] mx-[80px]">
+    <div class="grid grid-cols-3 gap-[50px] mx-[80px] mb-[240px]">
       <div class="col-span-2">
         <div class="detail-header flex justify-between px-[16px]">
           <div class="header-content flex flex-col">
@@ -535,10 +535,10 @@
           </Carousel>
           <button class="show-on-map-btn">Show On Map</button>
         </div>
-        <div class="reviews">
+        <div class="reviews mt-[80px]">
           <div class="flex items-center mb-[28px]">
             <span class="font-bold text-[28px] mt-[14px]">Reviews</span>
-            <div>
+            <div class="mx-[14px] pt-[15px]">
               <svg
                 width="20"
                 height="20"
@@ -553,6 +553,62 @@
               </svg>
             </div>
             <span class="font-bold text-[28px] mt-[14px]">5.0</span>
+          </div>
+          <div class="review-info grid grid-cols-4 grid-rows-3 gap-4">
+            <span class="font-medium">Amenities</span>
+            <el-progress :percentage="100" :color="'#9A9A9A'">
+              <span class="font-semibold">5.0</span>
+            </el-progress>
+            <span class="font-medium">Hygiene</span>
+            <el-progress :percentage="100" :color="'#9A9A9A'">
+              <span class="font-semibold">5.0</span>
+            </el-progress>
+            <div className="row-start-2 font-medium">Communication</div>
+            <el-progress
+              className="row-start-2 flex items-center"
+              :percentage="100"
+              :color="'#9A9A9A'"
+            >
+              <span class="font-semibold">5.0</span>
+            </el-progress>
+            <div className="row-start-2 font-medium">Location of Property</div>
+            <el-progress
+              className="row-start-2 flex items-center"
+              :percentage="100"
+              :color="'#9A9A9A'"
+            >
+              <span class="font-semibold">5.0</span>
+            </el-progress>
+            <div className="row-start-3 font-medium">Value for Money</div>
+            <el-progress
+              className="row-start-3 flex items-center"
+              :percentage="100"
+              :color="'#9A9A9A'"
+            >
+              <span class="font-semibold">5.0</span>
+            </el-progress>
+          </div>
+          <div class="most-prominent mt-[47px]">
+            <div className="grid grid-cols-2 grid-rows-2 gap-4">
+              <div class="comment-item" v-for="commentItem in most_comment" :key="commentItem.id">
+                <div class="header-comment flex mb-[15px]">
+                  <img
+                    class="flex shrink-0 rounded-full bg-neutral-300 h-[70px] w-[70px]"
+                    :src="commentItem.imgUrl"
+                  />
+                  <div class="ml-[17px]">
+                    <h3 class="font-bold">{{ commentItem.createName }}</h3>
+                    <span class="date">{{ commentItem.createAt }}</span>
+                  </div>
+                </div>
+                <p class="description-comment text-[#9A9A9A]">
+                  {{ commentItem.description }}
+                </p>
+              </div>
+            </div>
+            <button class="showmore-amenities">
+              <span class="font-semibold">Show All 100 Reviews</span>
+            </button>
           </div>
         </div>
       </div>
@@ -591,6 +647,8 @@ import IconInquiry from './icons/IconInquiry.vue'
 import IconPhone from './icons/IconPhone.vue'
 import IconShare from './icons/IconShare.vue'
 import IconHeart from './icons/IconHeart.vue'
+import { descriptionItemProps } from 'element-plus'
+import { comment } from 'postcss'
 
 const route = useRoute()
 const property = ref(null)
@@ -627,6 +685,41 @@ const services = [
   { name: 'Grill Restro & Bar', distance: 100, rating: 2 }
 ]
 
+// reviews
+const most_comment = [
+  {
+    id: 1,
+    createName: 'John Doberman',
+    createAt: 'Mar 12 2020',
+    imgUrl: '@/assets/images/avartar_card.jpg',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    id: 2,
+    createName: 'John Doberman',
+    createAt: 'Mar 12 2020',
+    imgUrl: '@/assets/images/avartar_card.jpg',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    id: 3,
+    createName: 'John Doberman',
+    createAt: 'Mar 12 2020',
+    imgUrl: '@/assets/images/avartar_card.jpg',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  },
+  {
+    id: 4,
+    createName: 'John Doberman',
+    createAt: 'Mar 12 2020',
+    imgUrl: '@/assets/images/avartar_card.jpg',
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  }
+]
 onMounted(async () => {
   const propertyId = route.params.id
 

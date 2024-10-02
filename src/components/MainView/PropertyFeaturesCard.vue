@@ -4,15 +4,17 @@
     @click="goDetailItem"
   >
     <div
-      class="flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
+      class="carousel-card flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
     >
-      <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true">
+      <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true" :mouseDrag="true">
         <Slide v-for="(image, index) in images" :key="index">
-          <img :src="image" class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat" />
+          <img
+            :src="image"
+            class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat"
+          />
         </Slide>
 
         <template #addons>
-          <Navigation />
           <Pagination />
         </template>
       </Carousel>
@@ -32,14 +34,14 @@
 </template>
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
 import PropertyFeatures from './PropertyFeatures.vue'
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel'
+import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
-import feature1 from '@/assets/images/feature_1.webp';
-import feature2 from '@/assets/images/feature_2.webp';
-import feature3 from '@/assets/images/feature_3.webp';
-import feature4 from '@/assets/images/feature_4.webp';
+import feature1 from '@/assets/images/feature_1.webp'
+import feature2 from '@/assets/images/feature_2.webp'
+import feature3 from '@/assets/images/feature_3.webp'
+import feature4 from '@/assets/images/feature_4.webp'
 
 const props = defineProps({
   id: {
@@ -70,8 +72,8 @@ const images = [feature1, feature2, feature3, feature4]
 const router = useRouter()
 const goDetailItem = () => {
   // Chuyển hướng đến trang chi tiết với ID của property
-  router.push({ name: 'PropertyDetail', params: { id: props.id } });
-};
+  router.push({ name: 'PropertyDetail', params: { id: props.id } })
+}
 </script>
 <style scoped>
 .shadow_card:hover {
@@ -84,26 +86,18 @@ const goDetailItem = () => {
   display: flex;
   justify-content: end;
 }
-.custom-pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
+
+.carousel-card /deep/ .carousel__pagination-button::after {
+  background-color: rgba(255, 255, 255, 0.705);
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
 }
 
-#pagination-custom .carousel__pagination-button::after {
-  width: 12px !important;
-  height: 12px !important;
-  border-radius: 50% !important;
-  background-color: #ccc !important;
-}
-
-#pagination-custom .carousel__pagination-button--active::after {
-  background-color: #007bff;
-}
-
-@media (hover: hover) {
-  #pagination-custom .carousel__pagination-button:hover::after {
-    background-color: #555;
-  }
+.carousel-card /deep/ .carousel__pagination-button--active::after {
+  background-color: white;
+  border-radius: 50%;
+  height: 10px;
+  width: 10px;
 }
 </style>
