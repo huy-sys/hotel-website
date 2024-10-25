@@ -783,17 +783,17 @@ ul > li {
 .carousel__slide {
   padding: 20px 0;
 }
-.nearby-services /deep/ .carousel__prev,
-.nearby-services /deep/ .carousel__next {
+.nearby-services :deep(.carousel__prev) ,
+.nearby-services :deep(.carousel__next)  {
   background: #9a9a9a;
   padding: 10px;
   border-radius: 50%;
   color: #fff;
 }
-.nearby-services /deep/ .carousel__next {
+.nearby-services :deep(.carousel__next)  {
   right: -25px;
 }
-.nearby-services /deep/ .carousel__prev {
+.nearby-services :deep(.carousel__prev)  {
   left: -25px;
 }
 .service-card {

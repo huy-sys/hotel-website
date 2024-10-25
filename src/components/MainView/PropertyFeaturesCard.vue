@@ -6,7 +6,7 @@
     <div
       class="carousel-card flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
     >
-      <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true" :mouseDrag="true">
+      <!-- <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true" :mouseDrag="true">
         <Slide v-for="(image, index) in images" :key="index">
           <img
             :src="image"
@@ -17,7 +17,15 @@
         <template #addons>
           <Pagination />
         </template>
-      </Carousel>
+      </Carousel> -->
+      <el-carousel :autoplay="false">
+        <el-carousel-item v-for="(image, index) in images" :key="index">
+          <img
+            :src="image"
+            class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat"
+          />
+        </el-carousel-item>
+      </el-carousel>
       <img
         src="../../assets/icons/Heart.svg"
         alt="Property image"
@@ -33,10 +41,8 @@
   </article>
 </template>
 <script setup lang="ts">
-import { defineProps } from 'vue'
 import { useRouter } from 'vue-router'
 import PropertyFeatures from './PropertyFeatures.vue'
-import { Carousel, Pagination, Slide } from 'vue3-carousel'
 import 'vue3-carousel/dist/carousel.css'
 import feature1 from '@/assets/images/feature_1.webp'
 import feature2 from '@/assets/images/feature_2.webp'
@@ -87,14 +93,14 @@ const goDetailItem = () => {
   justify-content: end;
 }
 
-.carousel-card /deep/ .carousel__pagination-button::after {
+.carousel-card :deep(.carousel__pagination-button::after)  {
   background-color: rgba(255, 255, 255, 0.705);
   border-radius: 50%;
   height: 10px;
   width: 10px;
 }
 
-.carousel-card /deep/ .carousel__pagination-button--active::after {
+.carousel-card :deep(.carousel__pagination-button--active::after)  {
   background-color: white;
   border-radius: 50%;
   height: 10px;

@@ -9,7 +9,7 @@
       <a class="grow shrink my-auto text-4xl font-extrabold text-zinc-700 w-[60px]" href="/">
         LOGO
       </a>
-      <div class="flex flex-wrap gap-10 font-semibold">
+      <div class="flex flex-wrap gap-10 font-semibold menu-header">
         <ul
           class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full"
         >
@@ -47,10 +47,9 @@
             </button>
             <div v-if="isMenuOpen" class="menu">
               <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/register">Sign Up</a></li>
+                <li><a href="/register">Login</a></li>
+                <li><a href="#">Help Center</a></li>
               </ul>
             </div>
             <button class="avatar">
@@ -105,6 +104,7 @@ const handleScroll = () => {
     scrollBackgroundColor.value = '#EFF0F2'
   }
 }
+
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
@@ -120,13 +120,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-ul > li > a {
+.menu-header > ul > li > a {
   text-decoration: none;
   color: #484848;
   transition: 0.4s;
   padding: 5px 10px;
 }
-ul > li > a:hover {
+.menu-header > ul > li > a:hover {
   background-color: hsla(180, 1%, 47%, 0.2);
   border-radius: 12px;
 }
@@ -142,29 +142,33 @@ h1:hover {
 }
 .menu {
   position: absolute;
-  top: 50px;
+  top: 60px;
   background-color: white;
   border: 1px solid #ccc;
-  padding: 1em;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
 }
 
-.menu ul {
+.menu > ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.menu ul li {
-  margin: 0.5em 0;
+.menu > ul > li {
+  padding: 17px 56px 17px 19px;
 }
 
-.menu ul li a {
+.menu > ul > li > a {
   text-decoration: none;
   color: black;
+  font-weight: 400;
+}
+.menu > ul > li:hover {
+  background-color: #e9e8e8a8;
 }
 
-.menu ul li a:hover {
-  color: #007BFF;
+.menu > ul > li > a:hover {
+  color: #007bff;
 }
 </style>
