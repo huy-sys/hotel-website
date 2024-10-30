@@ -76,7 +76,7 @@ const props = defineProps({
 const images = [feature1, feature2, feature3, feature4]
 
 const router = useRouter()
-const goDetailItem = () => {
+function goDetailItem() {
   // Chuyển hướng đến trang chi tiết với ID của property
   router.push({ name: 'PropertyDetail', params: { id: props.id } })
 }

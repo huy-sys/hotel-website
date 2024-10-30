@@ -25,7 +25,12 @@ const routes: Array<RouteRecordRaw> = [
         path: '/register',
         name: 'register-page',
         component: () => import('@/views/LoginOrSignUp.vue')
-      }
+      },
+      {
+        path: '/reservation',
+        name: 'reservation-page',
+        component: () => import('@/views/ReservationView.vue')
+      },
     ]
   }
 ]

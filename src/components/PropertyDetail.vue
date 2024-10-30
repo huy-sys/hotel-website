@@ -620,7 +620,7 @@
           <li>Medium Period: $ 2000</li>
           <li>Long Period: $ 2000</li>
         </ul>
-        <button class="reserve">Reserve Now</button>
+        <button @click="goToReservation" class="reserve">Reserve Now</button>
         <div class="redirect-action flex justify-between">
           <div class="flex">
             <IconInquiry />
@@ -639,7 +639,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { GoogleMap, CustomMarker } from 'vue3-google-map'
 import { Carousel, Navigation, Slide } from 'vue3-carousel'
 
@@ -647,10 +647,9 @@ import IconInquiry from './icons/IconInquiry.vue'
 import IconPhone from './icons/IconPhone.vue'
 import IconShare from './icons/IconShare.vue'
 import IconHeart from './icons/IconHeart.vue'
-import { descriptionItemProps } from 'element-plus'
-import { comment } from 'postcss'
 
 const route = useRoute()
+const router = useRouter()
 const property = ref(null)
 
 // map location
@@ -720,6 +719,11 @@ const most_comment = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
   }
 ]
+
+function goToReservation() {
+  router.push('/reservation')
+}
+
 onMounted(async () => {
   const propertyId = route.params.id
 

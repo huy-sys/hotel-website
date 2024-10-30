@@ -26,6 +26,6 @@ import NewsletterSignup from '@/components/MainView/NewsletterSignup.vue'
 .el-main {
   padding-left: 0;
   padding-right: 0;
-  padding-top: 80px;
+  padding-top: 0;
 }
 </style>
