@@ -721,7 +721,7 @@ const most_comment = [
 ]
 
 function goToReservation() {
-  router.push('/reservation')
+  router.push(`/property/${route.params.id}/reservation`)
 }
 
 onMounted(async () => {

@@ -14,12 +14,12 @@
           class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full"
         >
           <li><a href="/propertyList" class="font-semibold grow">Find a Property</a></li>
-          <li><a href="#" class="font-semibold basis-auto">Share Stories</a></li>
+          <li><a href="/stories" class="font-semibold basis-auto">Share Stories</a></li>
           <li><a href="#" class="font-semibold basis-auto">Rental Guides</a></li>
           <li><a href="#" class="font-semibold basis-auto">Download Mobile App</a></li>
         </ul>
         <div class="flex shrink gap-2.5 text-sm text-white basis-auto grow-0">
-          <a href="#" class="px-10 py-[14px] my-auto rounded-3xl bg-zinc-700 max-md:px-5">
+          <a href="/host" class="px-10 py-[14px] my-auto rounded-3xl bg-zinc-700 max-md:px-5">
             Become A Host
           </a>
           <div class="menu-list flex items-center">
@@ -98,7 +98,7 @@ const handleScroll = () => {
   const scrollPosition = window.scrollY
   console.log(scrollPosition)
 
-  if (childDiv2Position >= 210) {
+  if (childDiv2Position >= 400) {
     scrollBackgroundColor.value = 'transparent'
   } else {
     scrollBackgroundColor.value = '#EFF0F2'

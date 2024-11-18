@@ -31,7 +31,7 @@
         </ul>
       </div>
     </div>
-    <div class="sheet-container col-span-12 row-start-2">
+    <!-- <div class="sheet-container col-span-12 row-start-2">
       <h2>Google Sheet Data:</h2>
       <table class="sheet-table">
         <thead>
@@ -45,7 +45,7 @@
           </tr>
         </tbody>
       </table>
-    </div>
+    </div> -->
   </div>
 </template>
 

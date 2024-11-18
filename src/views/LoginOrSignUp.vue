@@ -8,7 +8,7 @@
       <header
         class="flex flex-wrap gap-5 justify-between text-lg font-bold text-zinc-700 max-md:max-w-full"
       >
-        <h1 data-layername="loginOrSignup">Login or Signup{{ step }}</h1>
+        <h1 data-layername="loginOrSignup">Login or Signup</h1>
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets/ec3d822fa3a24e8687a1fab7765c30ec/441315da72b6d7bea546cd26e12de7e39775cd069a27650dbac2d5ae063ff7a1?apiKey=ec3d822fa3a24e8687a1fab7765c30ec&"
@@ -80,7 +80,7 @@
             v-model="password"
             type="password"
             id="password"
-            class="mt-2 text-sm font-semibold text-zinc-700 bg-transparent w-full"
+            class="passswordInput mt-2 text-sm font-semibold text-zinc-700 bg-transparent w-full"
             placeholder="Enter Your Password"
             show-password
             required
@@ -223,5 +223,9 @@ async function submit() {
 }
 #phoneNumber:focus-visible {
   border: none;
+}
+.passswordInput :deep(.el-input__wrapper) {
+  box-shadow: none;
+  padding: 1px 0;
 }
 </style>

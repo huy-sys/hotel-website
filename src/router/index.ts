@@ -18,8 +18,8 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path:'/property/:id',
-        name: 'PropertyDetail',
-        component: () => import('@/components/PropertyDetail.vue')
+        name: 'property-detail',
+        component: () => import('@/components/PropertyDetail.vue'),
       },
       {
         path: '/register',
@@ -27,10 +27,20 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/LoginOrSignUp.vue')
       },
       {
-        path: '/reservation',
+        path: '/property/:id/reservation',
         name: 'reservation-page',
         component: () => import('@/views/ReservationView.vue')
       },
+      {
+        path: '/stories',
+        name: 'stories',
+        component: () => import('@/views/StoriesView.vue')
+      },
+      {
+        path: '/host',
+        name: 'host-page',
+        component: () => import('@/views/HostView.vue')
+      }
     ]
   }
 ]
