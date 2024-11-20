@@ -1,6 +1,6 @@
 <template>
   <article
-    class="flex flex-col items-start text-lg text-neutral-400 w-[32.2%] shadow_card rounded-b-lg"
+    class="flex flex-col items-start text-lg text-neutral-400 w-[32.2%] shadow_card rounded-b-lg cursor-pointer"
     @click="goDetailItem"
   >
     <div

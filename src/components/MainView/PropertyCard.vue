@@ -1,6 +1,6 @@
 <template>
   <article class="flex flex-col w-3/12 max-md:ml-0 max-md:w-full">
-    <div class="flex flex-col grow py-6 px-5 w-full rounded-lg bg-image max-md:mt-8">
+    <div class="flex flex-col grow py-6 px-5 w-full rounded-lg bg-image cursor-pointer max-md:mt-8 transform transition duration-300 hover:scale-105">
       <div class="flex" :class="rating ? 'justify-between' : 'justify-end'">
         <div class="star-rating" v-if="rating">
           <input type="range" v-model="localRating" min="0" max="5" step="1" />
