@@ -1,10 +1,6 @@
 <template>
   <div class="flex overflow-hidden flex-col bg-white rounded-3xl">
     <div class="header-container banner-header-image">
-      <!-- <div
-        class="mt-64 mb-40 text-9xl font-extrabold text-gray-200 max-md:mt-10 max-md:max-w-full max-md:text-4xl"
-      ></div> -->
-      <!-- <div class="flex shrink-0 mt-1.5 h-0.5 bg-zinc-700 w-[30px]"></div> -->
       <nav
         class="flex gap-8 mt-[25rem] mx-auto items-start text-base font-semibold whitespace-nowrap text-zinc-700 w-[430px]"
       >
@@ -52,7 +48,7 @@
             type="text"
             id="location"
             placeholder="Which city do you prefer?"
-            class="mt-3 text-sm text-neutral-300"
+            class="text-sm text-neutral-300 focus-visible:outline-0"
           />
         </div>
         <div class="flex gap-4 self-stretch my-auto">
@@ -65,7 +61,7 @@
               type="date"
               id="checkIn"
               placeholder="Add Dates"
-              class="mt-3 text-sm text-neutral-300"
+              class="text-sm text-neutral-300 focus-visible:outline-0"
             />
           </div>
         </div>
@@ -79,7 +75,7 @@
               type="date"
               id="checkOut"
               placeholder="Add Dates"
-              class="mt-3 text-sm text-neutral-300"
+              class="text-sm text-neutral-300 focus-visible:outline-0"
             />
           </div>
         </div>
@@ -93,11 +89,12 @@
               type="number"
               id="guests"
               placeholder="Add Guests"
-              class="mt-3 text-sm text-neutral-300"
+              min="0"
+              class="text-sm text-neutral-300 focus-visible:outline-0"
             />
           </div>
         </div>
-        <button type="submit" aria-label="Search">
+        <button @click="handleSearch" aria-label="Search">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f1d481ae89ba6816fdd35f3c920b02b63271681a6bcde2ffb9abf5a6d56c617?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
@@ -127,15 +124,6 @@
           />
         </div>
       </section>
-      <!-- <div
-        class="flex flex-wrap gap-10 mt-5 w-full text-base font-semibold whitespace-nowrap max-w-[1046px] text-zinc-700 max-md:max-w-full"
-      >
-        <PropertyFeatures
-          v-for="(property, index) in latestProperties"
-          :key="index"
-          :features="property.features"
-        />
-      </div> -->
       <h2
         class="mt-24 text-4xl font-bold leading-10 text-zinc-700 max-md:mt-10 max-md:ml-0.5 w-[339px]"
       >
@@ -241,7 +229,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-// import PropertyFeatures from './PropertyFeatures.vue'
 import HostingBanner from './HostingBanner.vue'
 import BlogPost from './BlogPost.vue'
 import AppDownloadBanner from './AppDownloadBanner.vue'
@@ -255,7 +242,9 @@ import type {
   topRatedProperty
 } from '../../assets/types/types'
 import PropertyFeaturesCard from './PropertyFeaturesCard.vue'
+import { useRouter } from 'vue-router'
 
+const router = useRouter()
 const latestProperties = ref<latestProperty[]>([
   {
     title: 'Well Furnished Apartment',
@@ -472,6 +461,10 @@ const browseForBanner = {
   title: 'Browse For More Properties',
   description: 'Explore properties by their categories/types...',
   title_btn: 'Find A Property'
+}
+
+function handleSearch() {
+  router.push('/search')
 }
 </script>
 <style scoped>

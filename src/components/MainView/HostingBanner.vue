@@ -20,7 +20,7 @@
       </div> -->
     </div>
     <a
-      href="#"
+      href="/host"
       class="self-start px-12 py-4 mt-14 text-base font-bold text-white bg-zinc-700 rounded-[30px] max-md:px-5 max-md:mt-10"
     >
       {{ banner.title_btn }}

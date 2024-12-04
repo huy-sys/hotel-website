@@ -40,6 +40,11 @@ const routes: Array<RouteRecordRaw> = [
         path: '/host',
         name: 'host-page',
         component: () => import('@/views/HostView.vue')
+      },
+      {
+        path: '/search',
+        name: 'search',
+        component: () => import('@/views/SearchView.vue')
       }
     ]
   }

@@ -78,7 +78,7 @@ const images = [feature1, feature2, feature3, feature4]
 const router = useRouter()
 function goDetailItem() {
   // Chuyển hướng đến trang chi tiết với ID của property
-  router.push({ name: 'PropertyDetail', params: { id: props.id } })
+  router.push({ name: 'property-detail', params: { id: props.id } })
 }
 </script>
 <style scoped>
