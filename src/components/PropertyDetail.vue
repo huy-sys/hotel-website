@@ -428,7 +428,7 @@
         </div>
         <div class="location-room mt-[50px]">
           <GoogleMap
-            api-key="AIzaSyDaOulQACiJzBfqumbsqg_-vKha8fCnL-s"
+            :api-key="api_map_key"
             style="width: 100%; height: 500px"
             :center="center"
             :zoom="15"
@@ -654,6 +654,7 @@ const property = ref(null)
 
 // map location
 const center = { lat: 40.689247, lng: -74.044502 }
+const api_map_key = import.meta.env.GOOGLE_API_KEY
 
 // carousel
 const settings = {

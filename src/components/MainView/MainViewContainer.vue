@@ -94,7 +94,7 @@
             />
           </div>
         </div>
-        <button @click="handleSearch" aria-label="Search">
+        <button @click="handleSearch">
           <img
             loading="lazy"
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f1d481ae89ba6816fdd35f3c920b02b63271681a6bcde2ffb9abf5a6d56c617?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
@@ -463,8 +463,10 @@ const browseForBanner = {
   title_btn: 'Find A Property'
 }
 
-function handleSearch() {
-  router.push('/search')
+const handleSearch = () => {
+  console.log('voady')
+  
+  router.push({ name: 'search-page' })
 }
 </script>
 <style scoped>

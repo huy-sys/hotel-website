@@ -174,6 +174,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
+import { signIn } from '@/stores/api/authService'
 
 const router = useRouter()
 const step = ref(1)
@@ -196,19 +197,13 @@ const countryCodeValue = computed(() => {
 
 async function submit() {
   try {
-    console.log('countryCodeValue', countryCodeValue.value, countryCode.value)
-    
     const phone = countryCodeValue.value + phoneNumber.value
-    console.log(phone)
-
     // Giả lập xác thực tài khoản - thay thế bằng API thực tế
-    if (phone === '971123456789' && password.value === '123') {
-      // Nếu đúng tài khoản, chuyển đến trang chính
-      router.push('/')
-    } else {
-      // Nếu sai, hiển thị thông báo lỗi
-      errorMessage.value = 'Invalid phone number or password.'
-    }
+    const response = await signIn(phone, password.value)
+    const token = response.data.token
+    localStorage.setItem('token', token) // Lưu token
+    message.value = 'Sign in successful!'
+    router.push('/')
   } catch (error) {
     console.error('Error during authentication:', error)
     errorMessage.value = 'An error occurred. Please try again.'
