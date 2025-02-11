@@ -1,6 +1,6 @@
 <template>
   <el-container>
-      <HeaderView />
+    <HeaderView />
     <el-main class="bg-white">
       <router-view />
     </el-main>
@@ -22,7 +22,7 @@ import NewsletterSignup from '@/components/MainView/NewsletterSignup.vue'
   min-height: calc(100% - 60px);
 }
 
-.el-footer, 
+.el-footer,
 .el-main {
   padding-left: 0;
   padding-right: 0;

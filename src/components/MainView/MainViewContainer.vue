@@ -38,6 +38,7 @@
       </nav>
 
       <form
+        @submit="handleSearch"
         class="flex gap-5 justify-between items-center mx-auto py-2 pr-2 pl-8 mt-9 mb-24 max-w-full font-semibold bg-white rounded-[35px] w-[794px] max-md:pl-5"
       >
         <div class="flex flex-col self-stretch my-auto">
@@ -45,6 +46,7 @@
             >Location</label
           >
           <input
+            v-model="searchForm.location"
             type="text"
             id="location"
             placeholder="Which city do you prefer?"
@@ -58,6 +60,7 @@
               >Check In</label
             >
             <input
+              v-model="searchForm.checkIn"
               type="date"
               id="checkIn"
               placeholder="Add Dates"
@@ -72,6 +75,7 @@
               >Check Out</label
             >
             <input
+              v-model="searchForm.checkOut"
               type="date"
               id="checkOut"
               placeholder="Add Dates"
@@ -86,6 +90,7 @@
               >Guests</label
             >
             <input
+              v-model="searchForm.guests"
               type="number"
               id="guests"
               placeholder="Add Guests"
@@ -94,12 +99,12 @@
             />
           </div>
         </div>
-        <button @click="handleSearch">
+        <button type="submit">
           <img
             loading="lazy"
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f1d481ae89ba6816fdd35f3c920b02b63271681a6bcde2ffb9abf5a6d56c617?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/3f1d481ae89ba6816fdd35f3c920b02b63271681a6bcde2ffb9abf5a6d56c617"
             class="object-contain shrink-0 self-stretch aspect-square w-[54px]"
-            alt=""
+            alt="Search"
           />
         </button>
       </form>
@@ -192,8 +197,8 @@
             :title="property.title"
             :address="property.address"
             :imageUrl="property.imageUrl"
-            :price="property.price"
-            :features="property.features"
+            :price="property.price || ''"
+            :features="property.features || {}"
             :features_images="property.features_images"
           />
         </div>
@@ -340,6 +345,7 @@ const featuredProperties = ref<featuredProperty[]>([
     id: 1,
     title: 'Well Furnished Apartment',
     address: '100 Smart Street, LA, USA',
+    category: 'Apartment',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
     price: '$ 1000 - 5000 USD',
@@ -354,6 +360,7 @@ const featuredProperties = ref<featuredProperty[]>([
     id: 2,
     title: 'Blue Door Villa Modern',
     address: '100 Smart Street, LA, USA',
+    category: 'Villa',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
@@ -369,6 +376,7 @@ const featuredProperties = ref<featuredProperty[]>([
     id: 3,
     title: 'Beach House Apartment',
     address: '100 Smart Street, LA, USA',
+    category: 'Apartment',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
@@ -384,6 +392,7 @@ const featuredProperties = ref<featuredProperty[]>([
     id: 4,
     title: 'Well Furnished Apartment',
     address: '100 Smart Street, LA, USA',
+    category: 'Apartment',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
@@ -399,6 +408,7 @@ const featuredProperties = ref<featuredProperty[]>([
     id: 5,
     title: 'Blue Door Villa Modern',
     address: '100 Smart Street, LA, USA',
+    category: 'Villa',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
@@ -414,6 +424,7 @@ const featuredProperties = ref<featuredProperty[]>([
     id: 6,
     title: 'Double Size Room',
     address: '100 Smart Street, LA, USA',
+    category: 'Room',
     imageUrl:
       'https://cdn.builder.io/api/v1/image/assets/TEMP/493fb20e14288ddbbd8fed9ea911e386d7f0ea3691ebcc34de4c164fb8329434?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec',
 
@@ -463,10 +474,27 @@ const browseForBanner = {
   title_btn: 'Find A Property'
 }
 
-const handleSearch = () => {
-  console.log('voady')
-  
-  router.push({ name: 'search-page' })
+// Add search form data
+const searchForm = ref({
+  location: '',
+  checkIn: '',
+  checkOut: '',
+  guests: 0
+})
+
+const handleSearch = (e: Event) => {
+  e.preventDefault() // Prevent form submission
+
+  // Navigate to search page with query params
+  router.push({
+    name: 'search-page',
+    query: {
+      location: searchForm.value.location,
+      checkIn: searchForm.value.checkIn,
+      checkOut: searchForm.value.checkOut,
+      guests: searchForm.value.guests
+    }
+  })
 }
 </script>
 <style scoped>

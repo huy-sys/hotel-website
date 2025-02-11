@@ -49,30 +49,19 @@ import feature2 from '@/assets/images/feature_2.webp'
 import feature3 from '@/assets/images/feature_3.webp'
 import feature4 from '@/assets/images/feature_4.webp'
 
-const props = defineProps({
-  id: {
-    type: Number
-  }, // Thêm ID để nhận diện property
-  title: {
-    type: String
-  },
-  address: {
-    type: String
-  },
-  imageUrl: {
-    type: String
-  },
-  price: {
-    type: String,
-    default: ''
-  },
-  features_images: {
-    type: Array
-  },
-  features: {
-    type: Object
-  }
-})
+interface PropertyFeaturesCardProps {
+  id: number
+  title: string
+  category?: string
+  address: string
+  imageUrl: string
+  price: string | null
+  features_images: string[]
+  features: object
+}
+
+const props = defineProps<PropertyFeaturesCardProps>()
+
 const images = [feature1, feature2, feature3, feature4]
 
 const router = useRouter()

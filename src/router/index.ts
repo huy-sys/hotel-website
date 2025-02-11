@@ -17,9 +17,9 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/PropertyListView.vue')
       },
       {
-        path:'/property/:id',
+        path: '/property/:id',
         name: 'property-detail',
-        component: () => import('@/components/PropertyDetail.vue'),
+        component: () => import('@/components/PropertyDetail.vue')
       },
       {
         path: '/register',

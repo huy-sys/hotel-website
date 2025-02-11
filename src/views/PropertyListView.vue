@@ -100,7 +100,6 @@ import { computed, ref } from 'vue'
 const focusedOption = ref('Apartments')
 const selectOption = (option: string) => {
   // Handle option selection
-  console.log(`Selected option: ${option}`)
   focusedOption.value = option
 }
 const featuredProperties = ref<featuredProperty[]>([
