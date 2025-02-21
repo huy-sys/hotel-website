@@ -7,7 +7,7 @@
         class="object-contain shrink-0 self-center aspect-[1.35] w-[23px]"
         alt="Bedrooms"
       />
-      <span>{{ features?.bedrooms }}</span>
+      <span class="font-semibold">{{ features?.bedrooms }}</span>
     </div>
     <div class="flex gap-2 self-stretch my-auto">
       <img
@@ -16,25 +16,25 @@
         class="object-contain shrink-0 self-center aspect-square w-[19px]"
         alt="Bathrooms"
       />
-      <span>{{ features?.bathrooms }}</span>
+      <span class="font-semibold">{{ features?.bathrooms }}</span>
     </div>
-    <div class="flex gap-1.5 self-stretch">
+    <div class="flex gap-1.5 self-stretch items-center">
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/778768614f4583ecc474666ea6b6d675da07ff5ad0b5a1720c5e2f0c17cd9139?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
         class="object-contain shrink-0 self-center aspect-square w-[27px]"
         alt="Area"
       />
-      <span class="self-start">{{ features?.area }}</span>
+      <span class="font-semibold">{{ features?.area }}</span>
     </div>
-    <div class="flex gap-1.5 self-stretch my-auto">
+    <div class="flex gap-1.5 self-stretch my-auto items-center">
       <img
         loading="lazy"
         src="https://cdn.builder.io/api/v1/image/assets/TEMP/22da1c07255a5dee5e577046dde6c462690e3d47254ceab2eb111203e01f9593?placeholderIfAbsent=true&apiKey=ec3d822fa3a24e8687a1fab7765c30ec"
         class="object-contain shrink-0 self-center aspect-square w-[23px]"
         alt="Parking"
       />
-      <span class="self-start">{{ features?.parking }}</span>
+      <span class="font-semibold">{{ features?.parking }}</span>
     </div>
   </div>
 </template>

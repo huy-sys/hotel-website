@@ -1,5 +1,5 @@
 <template>
-  <footer class="flex overflow-hidden flex-col w-full bg-white text-zinc-700 max-md:max-w-full">
+  <footer class="footer-container flex overflow-hidden flex-col w-full bg-white text-zinc-700 max-md:max-w-full">
     <div class="flex flex-col pt-20 pb-10 w-full bg-gray-100 max-md:max-w-full">
       <div
         class="flex flex-wrap gap-5 justify-between mx-auto w-full text-base max-w-[1720px] max-md:max-w-full"

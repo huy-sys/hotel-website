@@ -11,7 +11,7 @@
       </a>
       <div class="flex flex-wrap gap-10 font-semibold menu-header">
         <ul
-          class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full"
+          class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full menu-page"
         >
           <li><a href="/propertyList" class="font-semibold grow">Find a Property</a></li>
           <li><a href="/stories" class="font-semibold basis-auto">Share Stories</a></li>
@@ -46,10 +46,21 @@
               </svg>
             </button>
             <div v-if="isMenuOpen" class="menu">
-              <ul>
+              <ul v-if="!userStore.isLoggedIn">
                 <li><a href="/register">Sign Up</a></li>
                 <li><a href="/register">Login</a></li>
                 <li><a href="#">Help Center</a></li>
+              </ul>
+              <ul v-else>
+                <li><a class="font-semibold" href="#">Messages</a></li>
+                <li><a class="font-semibold" href="#">Notifications</a></li>
+                <li><a class="font-semibold" href="#">Properties</a></li>
+                <li><a class="font-semibold" href="#">Reservations</a></li>
+                <li><a class="font-semibold" href="#">Transaction History</a></li>
+                <li><div class="border-t border-gray-200"></div></li>
+                <li><a href="#">Account</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#" @click="handleLogout">Logout</a></li>
               </ul>
             </div>
             <button class="avatar">
@@ -74,12 +85,13 @@
 </template>
 
 <script setup lang="ts">
-import router from '@/router'
 import { useRoute } from 'vue-router'
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { useUserStore } from '@/stores/useUserStore'
 
 const scrollBackgroundColor = ref('')
 const route = useRoute()
+const userStore = useUserStore()
 
 const backgroundColor = computed(() => {
   if (scrollBackgroundColor.value) {
@@ -105,6 +117,12 @@ const handleScroll = () => {
   }
 }
 
+const handleLogout = () => {
+  userStore.logout(); // Cập nhật trạng thái trong store
+  localStorage.removeItem('token'); // Xóa token khỏi localStorage nếu đã lưu
+  window.location.reload()
+};
+
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
@@ -120,13 +138,13 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.menu-header > ul > li > a {
+.menu-header > .menu-page > ul > li > a {
   text-decoration: none;
   color: #484848;
   transition: 0.4s;
   padding: 5px 10px;
 }
-.menu-header > ul > li > a:hover {
+.menu-header > .menu-page > ul > li > a:hover {
   background-color: hsla(180, 1%, 47%, 0.2);
   border-radius: 12px;
 }
@@ -156,13 +174,14 @@ h1:hover {
 }
 
 .menu > ul > li {
-  padding: 17px 56px 17px 19px;
+  padding: 10px 19px;
 }
 
 .menu > ul > li > a {
   text-decoration: none;
   color: black;
   font-weight: 400;
+  margin-right: 56px;
 }
 .menu > ul > li:hover {
   background-color: #e9e8e8a8;

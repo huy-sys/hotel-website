@@ -157,6 +157,7 @@
         </button>
         <button
           class="flex items-center flex-1 gap-4 px-7 py-5 whitespace-nowrap bg-gray-200 rounded-[30px] max-md:px-5"
+          @click="loginGoogleAccount"
         >
           <img
             loading="lazy"
@@ -175,6 +176,9 @@
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { signIn } from '@/stores/api/authService'
+import { googleTokenLogin } from 'vue3-google-login'
+import { ElMessage } from 'element-plus'
+import { useUserStore } from '@/stores/useUserStore'
 
 const router = useRouter()
 const step = ref(1)
@@ -184,12 +188,11 @@ const password = ref('')
 const errorMessage = ref('')
 
 function nextStep() {
-  console.log(phoneNumber.value)
-
   if (phoneNumber.value) {
     step.value = 2
   }
 }
+
 const countryCodeValue = computed(() => {
   const match = countryCode.value.match(/\(?(\d+)\)?/)
   return match ? match[1] : null
@@ -200,14 +203,28 @@ async function submit() {
     const phone = countryCodeValue.value + phoneNumber.value
     // Giả lập xác thực tài khoản - thay thế bằng API thực tế
     const response = await signIn(phone, password.value)
-    const token = response.data.token
+    const { token } = response.data
     localStorage.setItem('token', token) // Lưu token
-    message.value = 'Sign in successful!'
+    if (errorMessage.value) {
+      errorMessage.value = ''
+    }
+    useUserStore().login(token)
+    ElMessage({
+      message: 'Sign in successful!',
+      type: 'success',
+      duration: 4000
+    })
     router.push('/')
   } catch (error) {
     console.error('Error during authentication:', error)
     errorMessage.value = 'An error occurred. Please try again.'
   }
+}
+
+const loginGoogleAccount = () => {
+  googleTokenLogin().then((response) => {
+    console.log('Handle the response', response)
+  })
 }
 </script>
 
@@ -218,6 +235,7 @@ async function submit() {
 }
 #phoneNumber:focus-visible {
   border: none;
+  outline: none;
 }
 .passswordInput :deep(.el-input__wrapper) {
   box-shadow: none;

@@ -1,44 +1,34 @@
 <template>
-  <article
-    class="flex flex-col items-start text-lg text-neutral-400 w-[32.2%] shadow_card rounded-b-lg cursor-pointer"
-    @click="goDetailItem"
-  >
-    <div
-      class="carousel-card flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
+  <div class="relative w-[100%] md:w-[32.2%]">
+    <article
+      class=" flex flex-col items-start text-lg text-neutral-400 shadow_card rounded-b-lg cursor-pointer"
+      @click="goDetailItem"
     >
-      <!-- <Carousel :itemsToShow="1" :paginationEnabled="true" :wrapAround="true" :mouseDrag="true">
-        <Slide v-for="(image, index) in images" :key="index">
-          <img
-            :src="image"
-            class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat"
-          />
-        </Slide>
-
-        <template #addons>
-          <Pagination />
-        </template>
-      </Carousel> -->
-      <el-carousel :autoplay="false">
-        <el-carousel-item v-for="(image, index) in images" :key="index">
-          <img
-            :src="image"
-            class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat"
-          />
-        </el-carousel-item>
-      </el-carousel>
-      <img
-        src="../../assets/icons/Heart.svg"
-        alt="Property image"
-        class="object-contain self-end aspect-square w-[30px] absolute m-2"
-      />
-      <div class="absolute mt-64 text-white font-semibold ml-2">{{ price }}</div>
+      <div
+        class="relative carousel-card flex flex-col self-stretch w-full font-semibold rounded-t-lg bg-zinc-200 max-md:pl-5"
+      >
+        <el-carousel :autoplay="false">
+          <el-carousel-item v-for="(image, index) in images" :key="index">
+            <img
+              :src="image"
+              class="carousel__item h-[300px] w-full rounded-t-lg bg-cover bg-no-repeat"
+            />
+          </el-carousel-item>
+        </el-carousel>
+  
+        <div class="absolute bottom-0 text-white font-semibold ml-2 mb-[14px]">{{ price }}</div>
+      </div>
+      <h2 class="px-3 mt-8 font-bold text-zinc-700">{{ title }}</h2>
+      <p class="px-3 mt-3 text-sm font-medium">{{ address }}</p>
+      <div class="px-3 my-3 flex gap-6 items-center text-base whitespace-nowrap text-zinc-700">
+        <PropertyFeatures :features="features" v-if="features"></PropertyFeatures>
+      </div>
+    </article>
+    <div class="absolute top-[10px] right-[10px] z-10 hover:scale-110 transition-all duration-300" @click="handleFavorite">
+      <HeartLight v-if="!isFavorite" />
+      <HeartFill v-else />
     </div>
-    <h2 class="px-3 mt-8 font-bold text-zinc-700">{{ title }}</h2>
-    <p class="px-3 mt-3 text-sm font-medium">{{ address }}</p>
-    <div class="px-3 my-3 flex gap-6 items-center text-base whitespace-nowrap text-zinc-700">
-      <PropertyFeatures :features="features" v-if="features"></PropertyFeatures>
-    </div>
-  </article>
+  </div>
 </template>
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
@@ -48,6 +38,8 @@ import feature1 from '@/assets/images/feature_1.webp'
 import feature2 from '@/assets/images/feature_2.webp'
 import feature3 from '@/assets/images/feature_3.webp'
 import feature4 from '@/assets/images/feature_4.webp'
+import HeartLight from '@/assets/icons/HeartLight.vue'
+import HeartFill from '@/assets/icons/HeartFill.vue'
 
 interface PropertyFeaturesCardProps {
   id: number
@@ -58,6 +50,7 @@ interface PropertyFeaturesCardProps {
   price: string | null
   features_images: string[]
   features: object
+  isFavorite: boolean
 }
 
 const props = defineProps<PropertyFeaturesCardProps>()
@@ -68,6 +61,11 @@ const router = useRouter()
 function goDetailItem() {
   // Chuyển hướng đến trang chi tiết với ID của property
   router.push({ name: 'property-detail', params: { id: props.id } })
+}
+
+function handleFavorite() {
+  console.log('handleFavorite')
+
 }
 </script>
 <style scoped>
@@ -82,17 +80,21 @@ function goDetailItem() {
   justify-content: end;
 }
 
-.carousel-card :deep(.carousel__pagination-button::after)  {
-  background-color: rgba(255, 255, 255, 0.705);
+.carousel-card :deep(.el-carousel__button) {
   border-radius: 50%;
   height: 10px;
   width: 10px;
 }
-
-.carousel-card :deep(.carousel__pagination-button--active::after)  {
-  background-color: white;
-  border-radius: 50%;
-  height: 10px;
-  width: 10px;
+.carousel-card :deep(.el-carousel__indicators--horizontal) {
+  left: 85%;
+  @media (max-width: 768px) {
+    left: 75%;
+  }
+  transform: none;
+  margin-bottom: 10px;
+}
+.carousel-card :deep(.el-carousel__indicator) {
+  cursor: none;
+  pointer-events: none;
 }
 </style>
