@@ -6,7 +6,7 @@ import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import 'vue3-carousel/dist/carousel.css'
 import vue3GoogleLogin from 'vue3-google-login'
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
+import piniaPersist from 'pinia-plugin-persistedstate'
 
 import App from './App.vue'
 import router from './router'
@@ -14,7 +14,7 @@ import router from './router'
 const app = createApp(App)
 
 const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate); // Sử dụng plugin để tự động lưu trạng thái
+pinia.use(piniaPersist); // Sử dụng plugin để tự động lưu trạng thái
 app.use(pinia);
 app.use(router)
 app.use(ElementPlus)

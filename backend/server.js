@@ -12,7 +12,10 @@ app.use(express.json())
 
 // Dummy user storage
 const hashedPassword = bcrypt.hashSync('123456', 10)
-const users = [{ username: '9710945126471', password: hashedPassword }]
+const users = [
+  { username: '9710945126471', password: hashedPassword, name: 'Stephen Benjamin' },
+  { username: 'johndoe@example.com', password: hashedPassword, name: 'John Doe' }
+]
 
 // Secret key for JWT
 const SECRET_KEY = 'abcd'
@@ -41,6 +44,18 @@ app.post('/signin', async (req, res) => {
 
   const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' })
   res.send({ message: 'Login successful', token })
+})
+
+// API để lấy name từ phone number hoặc email
+app.post('/get-user-info', (req, res) => {
+  const { username } = req.body
+  const user = users.find((u) => u.username === username)
+
+  if (!user) {
+    return res.status(404).send({ message: 'User not found' })
+  }
+
+  res.send({ name: user.name })
 })
 
 // Protected route example

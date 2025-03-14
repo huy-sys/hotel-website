@@ -12,6 +12,10 @@ export const signIn = async (username: string, password: string) => {
   return await api.post('/signin', { username, password });
 };
 
+export const getName = async (username: string) => {
+  return await api.post('/get-user-info', { username });
+};
+
 export const getProtectedData = async (token: string) => {
   return await api.get('/protected', {
     headers: {

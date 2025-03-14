@@ -60,7 +60,7 @@
           ></div>
           <div class="flex flex-col my-auto">
             <p data-layername="helloJohnDoe" class="text-base font-bold text-zinc-700">
-              Hello, John Doe
+              Hello, {{ fullName }}
             </p>
             <button
               data-layername="notYou"
@@ -175,7 +175,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
-import { signIn } from '@/stores/api/authService'
+import { getName, signIn } from '@/stores/api/authService'
 import { googleTokenLogin } from 'vue3-google-login'
 import { ElMessage } from 'element-plus'
 import { useUserStore } from '@/stores/useUserStore'
@@ -184,12 +184,21 @@ const router = useRouter()
 const step = ref(1)
 const countryCode = ref('UAE (+971)')
 const phoneNumber = ref('')
+const fullName = ref('')
 const password = ref('')
 const errorMessage = ref('')
 
-function nextStep() {
-  if (phoneNumber.value) {
-    step.value = 2
+async function nextStep() {
+  try {
+    if (phoneNumber.value && countryCodeValue.value) {
+      const phone = countryCodeValue.value + phoneNumber.value
+      const response = await getName(phone)
+      console.log(response.data)
+      fullName.value = response.data.name
+      step.value = 2
+    }
+  } catch (error) {
+    onsole.error('Error during authentication:', error)
   }
 }
 
@@ -204,6 +213,7 @@ async function submit() {
     // Giả lập xác thực tài khoản - thay thế bằng API thực tế
     const response = await signIn(phone, password.value)
     const { token } = response.data
+    localStorage.removeItem('token')
     localStorage.setItem('token', token) // Lưu token
     if (errorMessage.value) {
       errorMessage.value = ''
