@@ -157,7 +157,7 @@
       </form>
     </div>
     <main
-      class="main-container max-w-[1720px] flex flex-col items-start px-20 mt-24 mx-auto w-full max-md:px-5 max-md:mt-10 max-md:max-w-full"
+      class="maincontainer max-w-[1720px] flex flex-col items-start px-20 mt-24 mx-auto w-full max-md:px-5 max-md:mt-10 max-md:max-w-full"
     >
       <h2 class="text-4xl font-bold leading-10 text-zinc-700 max-md:ml-0.5 w-[339px]">
         Latest on the Property Listing
