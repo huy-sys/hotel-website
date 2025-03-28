@@ -12,6 +12,7 @@ props.msg
 <template>
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
+    <span>helllo</span>
   </div>
 </template>
 
