@@ -52,11 +52,11 @@
                 <li><a href="#">Help Center</a></li>
               </ul>
               <ul v-else>
-                <li><a class="font-semibol" href="#">Messages</a></li>
+                <li><a class="font-semibold" href="#">Messages</a></li>
                 <li><a class="font-semibold" href="#">Notifications</a></li>
-                <li><a class="font-semibol" href="#">Properties</a></li>
+                <li><a class="font-semibold" href="#">Properties</a></li>
                 <li><a class="font-semibold" href="/property/1/reservation">Reservations</a></li>
-                <li><a class="font-semibol" href="#">Transaction History</a></li>
+                <li><a class="font-semibold" href="#">Transaction History</a></li>
                 <li><div class="border-t border-gray-200"></div></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="#">Help Center</a></li>
