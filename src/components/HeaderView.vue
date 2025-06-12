@@ -22,7 +22,7 @@
           <a href="/host" class="px-10 py-[14px] my-auto rounded-3xl bg-zinc-700 max-md:px-5">
             Become A Host
           </a>
-          <div class="menu-list flex items-center">
+          <div class="menu-list flexitems-center">
             <button class="mr-[15px]" @click="toggleMenu">
               <svg
                 width="24"
@@ -46,17 +46,17 @@
               </svg>
             </button>
             <div v-if="isMenuOpen" class="menu">
-              <ul v-if="!userStore.isLoggedIn">
+              <ul v-if="userStore.isLoggedIn === false">
                 <li><a href="/register">Sign Up</a></li>
                 <li><a href="/register">Login</a></li>
                 <li><a href="#">Help Center</a></li>
               </ul>
               <ul v-else>
-                <li><a class="font-semibold" href="#">Messages</a></li>
+                <li><a class="font-semibol" href="#">Messages</a></li>
                 <li><a class="font-semibold" href="#">Notifications</a></li>
-                <li><a class="font-semibold" href="#">Properties</a></li>
-                <li><a class="font-semibold" href="#">Reservations</a></li>
-                <li><a class="font-semibold" href="#">Transaction History</a></li>
+                <li><a class="font-semibol" href="#">Properties</a></li>
+                <li><a class="font-semibold" href="/property/1/reservation">Reservations</a></li>
+                <li><a class="font-semibol" href="#">Transaction History</a></li>
                 <li><div class="border-t border-gray-200"></div></li>
                 <li><a href="#">Account</a></li>
                 <li><a href="#">Help Center</a></li>
@@ -86,7 +86,7 @@
 
 <script setup lang="ts">
 import { useRoute } from 'vue-router'
-import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
 import { useUserStore } from '@/stores/useUserStore'
 
 const scrollBackgroundColor = ref('')
@@ -134,6 +134,12 @@ onMounted(() => {
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+})
+
+watch(() => {
+  const isLogin = localStorage.getItem('token')
+  console.log('isLogin', isLogin)
+  
 })
 </script>
 
