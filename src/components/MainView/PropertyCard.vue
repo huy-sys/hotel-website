@@ -9,7 +9,7 @@
           </div>
         </div>
         <img
-          src="../../assets/icons/Heart.svg"
+          src="@/assets/icons/HeartLight.vue"
           loading="lazy"
           class="text-white object-contain self-center aspect-[1.13] w-[26px]"
           alt=""

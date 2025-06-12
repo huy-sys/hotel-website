@@ -15,7 +15,7 @@
         </el-carousel-item>
       </el-carousel>
       <img
-        src="../../assets/icons/Heart.svg"
+        src="@/assets/icons/HeartLight.vue"
         alt="Property image"
         class="object-contain self-end aspect-square w-[30px] absolute m-2"
       />
