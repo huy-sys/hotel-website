@@ -22,7 +22,7 @@
           <a href="/host" class="px-10 py-[14px] my-auto rounded-3xl bg-zinc-700 max-md:px-5">
             Become A Host
           </a>
-          <div class="menu-list flexitems-center">
+          <div class="menu-list flex items-center">
             <button class="mr-[15px]" @click="toggleMenu">
               <svg
                 width="24"
