@@ -560,7 +560,6 @@ const handleSearch = (e: Event) => {
 
   // Navigate to search page with query params
   if (searchForm.value.location || searchForm.value.checkIn || searchForm.value.checkOut || searchForm.value.guests) {
-    console.log(searchForm.value)
     router.push({
       name: 'search-page',
       query: {
@@ -570,6 +569,8 @@ const handleSearch = (e: Event) => {
         guests: searchForm.value.guests
       }
     })
+  } else {
+    alert("Hãy nhập location, checkin, checkout hoặc guest")
   }
 }
 watch(dateTime, (newVal) => {
