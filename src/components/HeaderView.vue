@@ -14,7 +14,7 @@
           class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full menu-page"
         >
           <li><a href="/propertyList" class="font-semibold grow">Find a Property</a></li>
-          <li><a href="/stories" class="font-semibold basis-auto">Share Stories</a></li>
+          <li><router-link to="/stories" class="font-semibold basis-auto">Share Stories</router-link></li>
           <li><a href="#" class="font-semibold basis-auto">Rental Guides</a></li>
           <li><a href="#" class="font-semibold basis-auto">Download Mobile App</a></li>
         </ul>
