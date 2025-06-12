@@ -49,8 +49,8 @@ interface PropertyFeaturesCardProps {
   imageUrl: string
   price?: string
   features_images: string[]
-  features: object
-  isFavorite: boolean
+  features?: object
+  isFavorite?: boolean
 }
 
 const props = defineProps<PropertyFeaturesCardProps>()
