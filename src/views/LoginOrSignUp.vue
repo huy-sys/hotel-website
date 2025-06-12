@@ -172,7 +172,7 @@
   </section>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { getName, signIn } from '@/stores/api/authService'
@@ -198,7 +198,7 @@ async function nextStep() {
       step.value = 2
     }
   } catch (error) {
-    onsole.error('Error during authentication:', error)
+    console.error('Error during authentication:', error)
   }
 }
 

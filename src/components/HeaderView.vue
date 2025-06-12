@@ -136,11 +136,9 @@ onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
 })
 
-watch(() => {
-  const isLogin = localStorage.getItem('token')
-  console.log('isLogin', isLogin)
-  
-})
+// watch(() => {
+//   const isLogin = localStorage.getItem('token')
+// })
 </script>
 
 <style scoped>
