@@ -14,12 +14,21 @@
           />
         </el-carousel-item>
       </el-carousel>
-      <img
+      <!-- <img
         src="@/assets/icons/HeartLight.vue"
         alt="Property image"
         class="object-contain self-end aspect-square w-[30px] absolute m-2"
-      />
-      <div class="absolute bottom-0 text-[#484848] font-semibold ml-[26px] flex gap-[21px] mb-[30px]">
+      /> -->
+      <div
+        class="absolute top-[10px] right-[10px] z-10 hover:scale-110 transition-all duration-300"
+        @click="handleFavorite"
+      >
+        <HeartLight v-if="!isFavorite" />
+        <HeartFill v-else />
+      </div>
+      <div
+        class="absolute bottom-0 text-[#484848] font-semibold ml-[26px] flex gap-[21px] mb-[30px]"
+      >
         <div>
           <img
             class="flex shrink-0 rounded-full bg-neutral-300 h-[76px] w-[76px]"
@@ -29,7 +38,7 @@
         <div class="leading-[23px]">
           <p class="text-[12px]">Listed By</p>
           <p class="font-bold text-[18px]">{{ listed_by }}</p>
-          <p class="text-[16px]"> For: {{price}}</p>
+          <p class="text-[16px]">For: {{ price }}</p>
         </div>
       </div>
     </div>
@@ -59,6 +68,8 @@ import feature1 from '@/assets/images/feature_1.webp'
 import feature2 from '@/assets/images/feature_2.webp'
 import feature3 from '@/assets/images/feature_3.webp'
 import feature4 from '@/assets/images/feature_4.webp'
+import HeartLight from '@/assets/icons/HeartLight.vue'
+import HeartFill from '@/assets/icons/HeartFill.vue'
 
 interface PropertyFeaturesCardProps {
   id: number
@@ -71,6 +82,7 @@ interface PropertyFeaturesCardProps {
   features?: object
   rental_duration?: string
   listed_by?: string
+  isFavorite: boolean
 }
 
 const props = defineProps<PropertyFeaturesCardProps>()
@@ -81,6 +93,10 @@ const router = useRouter()
 function goDetailItem() {
   // Chuyển hướng đến trang chi tiết với ID của property
   router.push({ name: 'property-detail', params: { id: props.id } })
+}
+function handleFavorite() {
+  console.log('handleFavorite')
+
 }
 </script>
 <style scoped>
@@ -113,5 +129,4 @@ function goDetailItem() {
   cursor: none;
   pointer-events: none;
 }
-
 </style>

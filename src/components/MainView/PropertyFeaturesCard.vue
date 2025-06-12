@@ -16,7 +16,7 @@
           </el-carousel-item>
         </el-carousel>
   
-        <div class="absolute bottom-0 text-white font-semibold ml-2 mb-[14px]">{{ price }}</div>
+        <div v-if="price" class="absolute bottom-0 text-white font-semibold ml-2 mb-[14px]">{{ price }}</div>
       </div>
       <h2 class="px-3 mt-8 font-bold text-zinc-700">{{ title }}</h2>
       <p class="px-3 mt-3 text-sm font-medium">{{ address }}</p>
@@ -47,7 +47,7 @@ interface PropertyFeaturesCardProps {
   category?: string
   address: string
   imageUrl: string
-  price: string | null
+  price?: string
   features_images: string[]
   features: object
   isFavorite: boolean

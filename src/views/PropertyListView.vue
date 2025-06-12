@@ -66,7 +66,7 @@
           :title="property.title"
           :address="property.address"
           :imageUrl="property.imageUrl"
-          :price="property.price"
+          :price="property?.price"
           :features_images="property.features_images"
         />
       </div>
