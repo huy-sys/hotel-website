@@ -33,8 +33,8 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: '/stories',
-        name: 'stories',
-        component: () => import('../views/StoriesView.vue')
+        name: 'stories-page',
+        component: () => import('@/views/StoriesView.vue')
       },
       {
         path: '/host',
