@@ -82,7 +82,7 @@ interface PropertyFeaturesCardProps {
   features?: object
   rental_duration?: string
   listed_by?: string
-  isFavorite: boolean
+  isFavorite?: boolean
 }
 
 const props = defineProps<PropertyFeaturesCardProps>()
