@@ -5,7 +5,7 @@
       <div class="text-lg text-[#484848] mt-[16px] mb-[33px]">
         Sample reservation form to be provided for the concept and further design...
       </div>
-      <a href="/" class="font-semibold text-lg text-[#484848]">Go To Home</a>
+      <router-link to="/" class="font-semibold text-lg text-[#484848]">Go To Home</router-link>
     </div>
     <div className="col-span-5 col-start-8 bg-[#EFF0F2] p-[30px] rounded-[10px]">
       <div className="grid grid-cols-5 grid-rows-1 gap-1">

@@ -23,8 +23,8 @@
             animi, id est laborum et dolorum fuga.
           </p>
           <div class="flex gap-10 mt-12 max-md:mt-10">
-            <a href="#" class="font-semibold basis-auto">Ask A Question</a>
-            <a href="#" class="font-semibold basis-auto">Find A Property</a>
+            <router-link to="#" class="font-semibold basis-auto">Ask A Question</router-link>
+            <router-link to="#" class="font-semibold basis-auto">Find A Property</router-link>
           </div>
           <a
             href="#"

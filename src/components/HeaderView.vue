@@ -6,22 +6,22 @@
     <nav
       class="flex overflow-hidden flex-wrap gap-10 self-stretch px-20 py-1.5 mx-auto bg-white bg-opacity-0 max-md:px-5 max-md:max-w-full w-[1720px]"
     >
-      <a class="grow shrink my-auto text-4xl font-extrabold text-zinc-700 w-[60px]" href="/">
+      <router-link to="/" class="grow shrink my-auto text-4xl font-extrabold text-zinc-700 w-[60px]">
         LOGO
-      </a>
+      </router-link>
       <div class="flex flex-wrap gap-10 font-semibold menu-header">
         <ul
           class="flex flex-wrap flex-auto gap-8 my-auto text-base text-zinc-700 max-md:max-w-full menu-page"
         >
-          <li><a href="/propertyList" class="font-semibold grow">Find a Property</a></li>
+          <li><router-link to="/propertyList" class="font-semibold grow">Find a Property</router-link></li>
           <li><router-link to="/stories" class="font-semibold basis-auto">Share Stories</router-link></li>
-          <li><a href="#" class="font-semibold basis-auto">Rental Guides</a></li>
-          <li><a href="#" class="font-semibold basis-auto">Download Mobile App</a></li>
+          <li><router-link to="#" class="font-semibold basis-auto">Rental Guides</router-link></li>
+          <li><router-link to="#" class="font-semibold basis-auto">Download Mobile App</router-link></li>
         </ul>
         <div class="flex shrink gap-2.5 text-sm text-white basis-auto grow-0">
-          <a href="/host" class="px-10 py-[14px] my-auto rounded-3xl bg-zinc-700 max-md:px-5">
+          <router-link to="/host" class="px-10 py-[14px] my-auto rounded-3xl bg-zinc-700 max-md:px-5">
             Become A Host
-          </a>
+          </router-link>
           <div class="menu-list flex items-center">
             <button class="mr-[15px]" @click="toggleMenu">
               <svg
@@ -47,20 +47,20 @@
             </button>
             <div v-if="isMenuOpen" class="menu">
               <ul v-if="userStore.isLoggedIn === false">
-                <li><a href="/register">Sign Up</a></li>
-                <li><a href="/register">Login</a></li>
-                <li><a href="#">Help Center</a></li>
+                <li><router-link to="/register">Sign Up</router-link></li>
+                <li><router-link to="/register">Login</router-link></li>
+                <li><router-link to="#">Help Center</router-link></li>
               </ul>
               <ul v-else>
-                <li><a class="font-semibol" href="#">Messages</a></li>
-                <li><a class="font-semibold" href="#">Notifications</a></li>
-                <li><a class="font-semibol" href="#">Properties</a></li>
-                <li><a class="font-semibold" href="/property/1/reservation">Reservations</a></li>
-                <li><a class="font-semibol" href="#">Transaction History</a></li>
+                <li><router-link class="font-semibol" to="#">Messages</router-link></li>
+                <li><router-link class="font-semibold" to="#">Notifications</router-link></li>
+                <li><router-link class="font-semibol" to="#">Properties</router-link></li>
+                <li><router-link class="font-semibold" to="/property/1/reservation">Reservations</router-link></li>
+                <li><router-link class="font-semibol" to="#">Transaction History</router-link></li>
                 <li><div class="border-t border-gray-200"></div></li>
-                <li><a href="#">Account</a></li>
-                <li><a href="#">Help Center</a></li>
-                <li><a href="#" @click="handleLogout">Logout</a></li>
+                <li><router-link to="#">Account</router-link></li>
+                <li><router-link to="#">Help Center</router-link></li>
+                <li><router-link to="#" @click="handleLogout">Logout</router-link></li>
               </ul>
             </div>
             <button class="avatar">

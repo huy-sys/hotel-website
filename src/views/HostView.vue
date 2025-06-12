@@ -76,9 +76,9 @@
           </article>
         </div>
       </div>
-      <a href="#" class="self-center mt-20 text-base font-bold text-white max-md:mt-10">
+      <router-link to="#" class="self-center mt-20 text-base font-bold text-white max-md:mt-10">
         View All Blogs
-      </a>
+      </router-link>
     </section>
   </main>
 </template>
